@@ -1,0 +1,17 @@
+.ReactPlayr {
+  grid-area: 'ReactPlayer';
+}
+.Info_course {
+  grid-area: 'Info_course'
+}
+.SideMenu_course {
+  grid-area: "SideMenu_course"
+}
+
+.Zkt_course {
+  display: grid;
+  grid-template-columns: auto 400px;
+  // grid-template-areas: 
+  // "SideMenu_course SideMenu_course" 
+  // "Info_course SideMenu_course";
+}
