@@ -5,15 +5,20 @@ const CourseSchema = new Schema({
     courseNameColor: String,
     backgroundColor: String,
     linkOnTrialVideo: String,
+    link: String,
     modules: [
         {
             trial: {
                 name: String,
                 duration: String,
                 countLections: Number,
+                shortDescription: String,
+                description: String,
                 items: [{ label: String, duration: Number }],
             },
-            full: {},
+            full: {
+                link: String,
+            },
         },
     ],
 });
