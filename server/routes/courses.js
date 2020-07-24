@@ -21,11 +21,25 @@ router.post("/add", async (req, res) => {
             linkOnTrialVideo,
             modules,
         });
-
         await newCourse.save();
     } else {
         res.send(403);
         res.redirect("/auth/login");
+    }
+});
+
+router.get("/all", async (req, res) => {
+    const courses = await Course.find();
+    res.send(courses);
+});
+
+router.get("/id:link", async (req, res) => {
+    const { link } = req.params;
+    const course = await Course.find({ link });
+    if (req.session.user.courses.filter((e) => e.link === link)) {
+        res.send(course.trial);
+    } else {
+        res.send(course);
     }
 });
 

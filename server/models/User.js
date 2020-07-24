@@ -6,10 +6,7 @@ const UserSchema = new Schema({
     password: String,
     courses: [
         {
-            courseId: {
-                type: Schema.Types.ObjectId,
-                ref: "Course",
-            },
+            courseId: String,
         },
     ],
 });

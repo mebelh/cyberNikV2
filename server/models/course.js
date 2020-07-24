@@ -5,6 +5,7 @@ const CourseSchema = new Schema({
     courseNameColor: String,
     backgroundColor: String,
     linkOnTrialVideo: String,
+    link: String,
     modules: [
         {
             trial: {
