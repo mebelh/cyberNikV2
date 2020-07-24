@@ -11,9 +11,13 @@ const CourseSchema = new Schema({
                 name: String,
                 duration: String,
                 countLections: Number,
+                shortDescription: String,
+                description: String,
                 items: [{ label: String, duration: Number }],
             },
-            full: {},
+            full: {
+                link: String,
+            },
         },
     ],
 });
