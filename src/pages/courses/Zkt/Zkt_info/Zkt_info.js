@@ -1,12 +1,13 @@
 import React from 'react'
 
-import Name from './../courses_blocks/Name'
+import Name from './../../courses_blocks/Name'
 // import Hours from './courses_blocks/Hours'
 import ReactPlayer from 'react-player'
-import EnrollBtn from './../courses_blocks/EnrollBtn'
-import CourseMaterials from './../courses_blocks/CourseMaterials'
-import './../courses_blocks/chapters.scss'
-import './../courses_blocks/coursePage.scss'
+import EnrollBtn from './../../courses_blocks/EnrollBtn'
+import CourseMaterials from './../../courses_blocks/CourseMaterials'
+import './../../courses_blocks/chapters.scss'
+import './../../courses_blocks/coursePage.scss'
+
 export default function Zkt() {
 
   let modules = [
