@@ -1,5 +1,5 @@
 import React from "react";
-import CyberIzbushkaWhite from "../img/cyberIzbushkaWhite.png";
+import CyberIzbushkaWhite from "./../../img/cyberIzbushkaWhite.png";
 import "./Footer.scss";
 export default function Footer() {
     return (

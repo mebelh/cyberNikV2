@@ -1,9 +1,7 @@
-import React from 'react'
-import Poster from './../Poster/Poster'
-import Advantages from './../../components/Advantages/Advantages'
-import CourseList from './../CourseList/CourseList'
-
-
+import React from "react";
+import Poster from "./../../components/Poster";
+import Advantages from "./../../components/Advantages";
+import CourseList from "./../../components/CourseList";
 
 function Home() {
   return (
