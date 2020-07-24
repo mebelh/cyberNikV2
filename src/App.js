@@ -22,7 +22,9 @@ function App() {
       <BrowserRouter>
         <Switch>
           <Route path={'/'} exact component={Home} />
-          <Route path={'/zkt'} component={Zkt_course} />
+          <Route path={'/zkt_info'} component={Zkt_info} />
+          <Route path={'/zkt_course'} component={Zkt_course} />
+
           {/* <Route path={'/about'} component={About} /> */}
           {/* <Route path={'/lectures'} component={Lectures} /> */}
           {/* <Route path={'/library'} component={Libriary} /> */}
