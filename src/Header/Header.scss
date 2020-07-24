@@ -1,0 +1,31 @@
+.header {
+  display: grid;
+  grid-area: menu;
+  grid-template-columns: 1fr ;
+  grid-auto-flow: column;
+  align-items: center;
+  padding: 20px 30px;
+  background-color: #fafafa;
+
+  // &__item {
+  //   margin: 0 20px;
+  // }
+
+  &__btn {
+    border: 1px solid #cce8f8;
+    padding: 7px;
+  }
+
+  &__btn a{
+    text-decoration: none;
+    color: #248ffa;
+    font-weight: 600;
+  }
+
+  &__wrapper--left {
+  display: flex;
+  align-items: center;
+  }
+
+
+}

@@ -1,0 +1,40 @@
+.course {
+
+  &-list {
+    grid-area: courses;
+    display: grid;
+    grid-gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    margin-bottom: 300px;
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+
+  img{
+    width: 100%;
+    transition: all ease 0.3s;
+  }
+  
+  p {
+    position: absolute;
+    color: white;
+    font-family: harry;
+    font-size: 60px;
+    transition: all ease 0.3s;
+  }
+
+  &:hover img {
+
+    background-color: rgba(0, 0, 0, 0.966);
+    webkit-filter: blur(4px); /* Chrome, Safari, Opera */
+    filter: blur(4px) grayscale(20%);
+  }
+  &:hover p {
+
+    transform: scale(1.2);
+  }
+}
