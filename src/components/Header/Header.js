@@ -1,7 +1,7 @@
 import React from "react";
 import Logo from "../Logo/Logo";
-import logoPath from "./../img/cyberIzbushkaBlue.png";
-import DropdownBtn from "./../DropdownBtn/DropdownBtn";
+import logoPath from "./../../img/cyberIzbushkaWhite.png";
+import DropdownBtn from "./../DropdownBtn";
 import "./Header.scss";
 export default function Header() {
     return (

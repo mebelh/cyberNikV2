@@ -1,5 +1,5 @@
 import React from "react";
-import HarryAndBook from "../img/HarryAndBook.jpg";
+import HarryAndBook from "./../../img/HarryAndBook.jpg";
 import { Link } from "react-router-dom";
 
 import "./CourseList.scss";
