@@ -2,8 +2,7 @@ import React from "react";
 import Logo from "../Logo/Logo";
 import logoPath from "./../../img/cyberIzbushkaBlue.png";
 import DropdownBtn from "./../buttons/DropdownBtn";
-import SignInBtn from './../buttons/SignInBtn/SignInBtn'
-import SignUpBtn from './../buttons/SignUpBtn/SignUpBtn'
+import SignBtn from "../buttons/SignBtn";
 
 import "./Header.scss";
 export default function Header() {
@@ -14,8 +13,16 @@ export default function Header() {
                 <DropdownBtn className="btn header__btn" />
             </div>
             <div className="header_right-part">
-                <SignInBtn />
-                <SignUpBtn />
+                <SignBtn
+                    label="Войти"
+                    href="/auth/signin"
+                    bgc="rgb(26, 142, 250)"
+                />
+                <SignBtn
+                    label="Регистрация"
+                    href="/auth/signup"
+                    bgc="rgb(24, 107, 185)"
+                />
             </div>
         </div>
     );
