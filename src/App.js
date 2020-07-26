@@ -24,8 +24,8 @@ function App() {
                     <Route path={"/"} exact component={Home} />
                     <Route path={"/zkt_info"} component={Zkt_info} />
                     <Route path={"/zkt_course"} component={Zkt_course} />
-                    <Route path={"/auth/signin"} component={SignIn} />
-                    <Route path={"/auth/signup"} component={SignUp} />
+                    <Route path={"/auth/login"} component={SignIn} />
+                    <Route path={"/auth/register"} component={SignUp} />
 
                     {/* <Route path={'/about'} component={About} /> */}
                     {/* <Route path={'/lectures'} component={Lectures} /> */}

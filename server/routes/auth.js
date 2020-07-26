@@ -8,6 +8,7 @@ const User = require("../models/user");
 
 router.post("/login", async (req, res) => {
     const { login, password } = req.body;
+    // console.log(req.body);
     const candidate = await User.findOne({ login });
 
     if (candidate) {
@@ -23,10 +24,45 @@ router.post("/login", async (req, res) => {
             });
         }
     } else {
-        res.redirect("/todo/login");
+        // res.redirect("/todo/login");
     }
 });
 
-router.post("/register", (req, res) => {});
+router.post("/register", async (req, res) => {
+    try {
+        const { login, password, repeat } = req.body;
+
+        const candidate = await User.findOne({ login });
+        if (candidate) {
+            //Логин занят
+            res.redirect("/auth/login#register");
+        } else if (password !== repeat) {
+            console.log(password + "  ||| " + repeat);
+            //Пароли не совпадают
+            res.redirect("/auth/login#register");
+        } else {
+            const hashPassword = await bcrypt.hash(password, 10);
+            const user = new User({
+                login,
+                password: hashPassword,
+                courses: [],
+            });
+
+            //Успешная регистрация
+
+            await user.save();
+
+            res.redirect("/auth/login");
+        }
+    } catch (e) {
+        console.log(e);
+    }
+});
+
+router.get("/logout", (req, res) => {
+    req.session.destroy(() => {
+        res.redirect("/auth/login");
+    });
+});
 
 module.exports = router;

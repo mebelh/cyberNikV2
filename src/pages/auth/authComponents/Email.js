@@ -1,10 +1,10 @@
-import React from 'react'
+import React from "react";
 
 export default function Email() {
-  return (
-    <label htmlFor="email">
-      <span>Email:</span>
-      <input type="text" placeholder="Enter email" name="email" />
-    </label>
-  )
+    return (
+        <label htmlFor="login">
+            <span>Email:</span>
+            <input type="text" placeholder="Enter email" name="login" />
+        </label>
+    );
 }
