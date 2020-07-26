@@ -1,3 +1,5 @@
+
+
 .poster {
   grid-area: poster;
   display: flex;
@@ -10,8 +12,9 @@
   background-size: cover;
 
   p {
+    transform: translateY(50px);
     color: white;
-    font-size: 80px;
+    font-size: 100px;
     font-family: harry;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: #248ffa3f;

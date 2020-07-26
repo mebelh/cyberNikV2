@@ -8,7 +8,7 @@ export default function CourseList() {
     return (
         <React.Fragment>
             <div className="course-list">
-                <Link className="course" to="/zkt">
+                <Link className="course" to="/zkt_info">
                     <img src={HarryAndBook} alt="" />
                     <p>Лекции по ЗКТ</p>
                 </Link>
