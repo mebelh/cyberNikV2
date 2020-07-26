@@ -7,6 +7,8 @@ const mongoose = require("mongoose");
 const MongoStore = require("connect-mongodb-session")(session);
 const bodyParser = require("body-parser");
 
+const coursesRoute = require('./routes/courses')
+
 const MONGO_URI =
     "mongodb+srv://artem:12345@cluster0.6bskz.mongodb.net/CyberIz?retryWrites=true&w=majority";
 
@@ -36,6 +38,8 @@ app.use(
         store,
     })
 );
+
+app.use('/courses', coursesRoute)
 
 const User = require("./models/User");
 const bcrypt = require("bcrypt");
