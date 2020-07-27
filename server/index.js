@@ -45,7 +45,6 @@ app.use(
 app.use(userMiddleware);
 
 app.use("/courses", coursesRoute);
-app.use("/courses", coursesRoute);
 app.use("/auth", authRoute);
 
 // const User = require("./models/User");

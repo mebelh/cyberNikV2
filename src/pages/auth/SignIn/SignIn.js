@@ -19,12 +19,12 @@ export default class SignIn extends Component {
     };
 
     checkLogin = async () => {
-        fetch("http://localhost:3001/auth/login/adm", {
+        await fetch("http://localhost:3001/auth/login/adm", {
             method: "POST",
             body: {
                 test: "asdasdasdasdasd",
             },
-        }).then(async (res) => console.log(await res.json()));
+        }).then((res) => console.log(res));
         // if (isOk.ok) {
         //     console.log("ok " + isOk);
         // }

@@ -1,12 +1,12 @@
-import React from 'react'
-import AddCourse from '../AddCourse/addCourse'
-import AddModules from '../AddModules/AddModules'
+import React from "react";
+import AddCourse from "../addCourse/AddCourse";
+import AddModules from "../AddModules/AddModules";
 
 export default function PageAddCourse() {
-  return (
-    <div>
-      <AddCourse />
-      <AddModules />
-    </div>
-  )
+    return (
+        <div>
+            <AddCourse />
+            <AddModules />
+        </div>
+    );
 }
