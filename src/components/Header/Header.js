@@ -15,12 +15,12 @@ export default function Header() {
             <div className="header_right-part">
                 <SignBtn
                     label="Войти"
-                    href="/auth/signin"
+                    href="/auth/login"
                     bgc="rgb(26, 142, 250)"
                 />
                 <SignBtn
                     label="Регистрация"
-                    href="/auth/signup"
+                    href="/auth/register"
                     bgc="rgb(24, 107, 185)"
                 />
             </div>

@@ -1,7 +1,9 @@
-import React from 'react'
+import React from "react";
 
-export default function SubmitBtn(props) {
-  return (
-    <button className='btn btn-info' type="submit">{props.text}</button>
-  )
+export default function SubmitBtn({ text, checkLogin }) {
+    return (
+        <button className="btn btn-info" type="submit" onClick={checkLogin}>
+            {text}
+        </button>
+    );
 }

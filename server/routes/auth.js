@@ -2,9 +2,28 @@ const { Router } = require("express");
 const router = Router();
 const bcrypt = require("bcrypt");
 
-const { v4: uuidv4 } = require("uuid");
+// const { v4: uuidv4 } = require("uuid");
 
 const User = require("../models/user");
+
+router.post("/login/adm", async (req, res) => {
+    console.log(req.body);
+
+    res.setHeader("Access-Control-Allow-Origin", "*");
+    res.setHeader(
+        "Access-Control-Allow-Headers",
+        "origin, content-type, accept"
+    );
+    res.send("asdss");
+    // res.send("sssss");
+    // i (req.session.isAuthentificated) {
+    //     res.send({
+    //         email: req.session.user.login,
+    //         name: req.session.user.name,
+    //         courses: req.session.user.courses,
+    //     });
+    // }
+});
 
 router.post("/login", async (req, res) => {
     const { login, password } = req.body;
@@ -19,14 +38,52 @@ router.post("/login", async (req, res) => {
             req.session.user = candidate;
             req.session.isAuthentificated = true;
             req.session.save(() => {
-                res.redirect("/todo");
+                // res.redirect("http://localhost:3000/");
             });
         }
     } else {
-        res.redirect("/todo/login");
+        res.redirect("http://localhost:3000/auth/login");
     }
 });
 
-router.post("/register", (req, res) => {});
+router.post("/register", async (req, res) => {
+    try {
+        const { login, name, password, repeat } = req.body;
+
+        const candidate = await User.findOne({ login });
+        if (candidate) {
+            //Логин занят
+            // res.redirect("/auth/login#register");
+        }
+        // else if (password !== repeat) {
+        // console.log(password + "  ||| " + repeat);
+        //Пароли не совпадают
+        // res.redirect("/auth/login#register");
+        // }
+        else {
+            const hashPassword = await bcrypt.hash(password, 10);
+            const user = new User({
+                login,
+                password: hashPassword,
+                name,
+                courses: [],
+            });
+
+            //Успешная регистрация
+
+            await user.save();
+
+            res.redirect("http://localhost:3000/auth/login");
+        }
+    } catch (e) {
+        console.log(e);
+    }
+});
+
+router.get("/logout", (req, res) => {
+    req.session.destroy(() => {
+        res.redirect("/auth/login");
+    });
+});
 
 module.exports = router;

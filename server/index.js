@@ -7,10 +7,13 @@ const mongoose = require("mongoose");
 const MongoStore = require("connect-mongodb-session")(session);
 const bodyParser = require("body-parser");
 
-const coursesRoute = require('./routes/courses')
+const coursesRoute = require("./routes/courses");
+const authRoute = require("./routes/auth");
 
 const MONGO_URI =
     "mongodb+srv://artem:12345@cluster0.6bskz.mongodb.net/CyberIz?retryWrites=true&w=majority";
+
+const userMiddleware = require("./middleware/user");
 
 const store = new MongoStore({
     uri: MONGO_URI,
@@ -39,10 +42,14 @@ app.use(
     })
 );
 
-app.use('/courses', coursesRoute)
+app.use(userMiddleware);
 
-const User = require("./models/User");
-const bcrypt = require("bcrypt");
+app.use("/courses", coursesRoute);
+app.use("/courses", coursesRoute);
+app.use("/auth", authRoute);
+
+// const User = require("./models/User");
+// const bcrypt = require("bcrypt");
 
 const start = async () => {
     try {
@@ -51,14 +58,14 @@ const start = async () => {
             useNewUrlParser: true,
             useFindAndModify: false,
         });
-        const admin = await User.findOne();
-        if (!admin) {
-            const user = new User({
-                login: "admin",
-                password: await bcrypt.hash("admin", 12),
-            });
-            await user.save();
-        }
+        // const admin = await User.findOne();
+        // if (!admin) {
+        //     const user = new User({
+        //         login: "admin",
+        //         password: await bcrypt.hash("admin", 12),
+        //     });
+        //     await user.save();
+        // }
         app.listen(PORT, () => {
             console.log(`Server has been started on ${PORT}.`);
         });
