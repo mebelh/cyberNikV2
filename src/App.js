@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { useState, Component } from "react";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -16,10 +16,10 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import "./App.scss";
 
-<<<<<<< HEAD
 import PageaddCourse from "./pages/admin/PageAddCourse/PageAddCourse";
 
-function App() {
+export default function App() {
+    const [user, setUser] = useState(undefined)
     return (
         <div className="App">
             <Header />
@@ -29,8 +29,8 @@ function App() {
                     <Route path={"/"} exact component={Home} />
                     <Route path={"/zkt_info"} component={Zkt_info} />
                     <Route path={"/zkt_course"} component={Zkt_course} />
-                    <Route path={"/auth/signin"} component={SignIn} />
-                    <Route path={"/auth/signup"} component={SignUp} />
+                    <Route path={"/auth/login"} component={SignIn} />
+                    <Route path={"/auth/register"} component={SignUp} />
                     <Route path={"/admin/addCourse"} component={PageaddCourse} />
                     <Route path={"/admin/users"} component={Users} />
                     {/* <Route path={'/about'} component={About} /> */}
@@ -42,33 +42,4 @@ function App() {
             <Footer />
         </div>
     );
-=======
-export default class App extends Component {
-    state = {
-        user: undefined,
-    };
-
-    render() {
-        return (
-            <div className="App">
-                <Header />
-                <BrowserRouter>
-                    <Switch>
-                        <Route path={"/"} exact component={Home} />
-                        <Route path={"/zkt_info"} component={Zkt_info} />
-                        <Route path={"/zkt_course"} component={Zkt_course} />
-                        <Route path={"/auth/login"} component={SignIn} />
-                        <Route path={"/auth/register"} component={SignUp} />
-
-                        {/* <Route path={'/about'} component={About} /> */}
-                        {/* <Route path={'/lectures'} component={Lectures} /> */}
-                        {/* <Route path={'/library'} component={Libriary} /> */}
-                        <Route path={"/films"} component={Films} />
-                    </Switch>
-                </BrowserRouter>
-                <Footer />
-            </div>
-        );
-    }
->>>>>>> d962cacac54d75d8bbae9936dbc8f6ac507f2751
 }

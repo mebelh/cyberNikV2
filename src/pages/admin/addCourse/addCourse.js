@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import React from 'react'
 import './AddCourse.scss'
 export default function addCourse() {
@@ -25,34 +24,4 @@ export default function addCourse() {
       </div>
     </div>
   )
-=======
-import React from "react";
-
-export default function addCourse() {
-    return (
-        <div className="addCourse">
-            <h2>Добавить курс:</h2>
-            <label>
-                <span>Имя курса:</span>
-                <input type="text" />
-            </label>
-            <label>
-                <span>Цвет имени курса:</span>
-                <input type="color" />
-            </label>
-            <label>
-                <span>Цвет фона:</span>
-                <input type="color" />
-            </label>
-            <label>
-                <span>Короткое описание курса:</span>
-                <input type="text" />
-            </label>
-            <label>
-                <span>Описание каждого модуля</span>
-                <input type="text" />
-            </label>
-        </div>
-    );
->>>>>>> d962cacac54d75d8bbae9936dbc8f6ac507f2751
 }
