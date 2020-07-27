@@ -1,5 +1,5 @@
 import React from 'react'
-
+import './AddCourse.scss'
 export default function addCourse() {
   return (
     <div className="addCourse">
@@ -8,22 +8,20 @@ export default function addCourse() {
         <span>Имя курса:</span>
         <input type="text" />
       </label>
-      <label>
+      <div>
         <span>Цвет имени курса:</span>
         <input type="color" />
-      </label>
-      <label>
+      </div>
+      <div>
         <span>Цвет фона:</span>
         <input type="color" />
-      </label>
-      <label>
-        <span>Короткое описание курса:</span>
-        <input type="text" />
-      </label>
-      <label>
-        <span>Описание каждого модуля</span>
-        <input type="text" />
-      </label>
+      </div>
+      <div>
+        <textarea placeholder="Короткое описание курса" rows="8" cols="80" />
+      </div>
+      <div>
+        <textarea placeholder="Описание каждого модуля" rows="12" cols="80" />
+      </div>
     </div>
   )
 }
