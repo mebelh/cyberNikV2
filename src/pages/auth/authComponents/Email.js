@@ -1,10 +1,17 @@
 import React from "react";
 
-export default function Email() {
+export default function Email({ onLoginChange }) {
     return (
         <label htmlFor="login">
             <span>Email:</span>
-            <input type="text" placeholder="Enter email" name="login" />
+            <input
+                type="text"
+                placeholder="Enter email"
+                name="login"
+                onChange={({ target }) => {
+                    onLoginChange(target.value);
+                }}
+            />
         </label>
     );
 }

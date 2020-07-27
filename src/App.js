@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Component } from "react";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -15,27 +15,31 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import "./App.scss";
 
-function App() {
-    return (
-        <div className="App">
-            <Header />
-            <BrowserRouter>
-                <Switch>
-                    <Route path={"/"} exact component={Home} />
-                    <Route path={"/zkt_info"} component={Zkt_info} />
-                    <Route path={"/zkt_course"} component={Zkt_course} />
-                    <Route path={"/auth/login"} component={SignIn} />
-                    <Route path={"/auth/register"} component={SignUp} />
+export default class App extends Component {
+    state = {
+        user: undefined,
+    };
 
-                    {/* <Route path={'/about'} component={About} /> */}
-                    {/* <Route path={'/lectures'} component={Lectures} /> */}
-                    {/* <Route path={'/library'} component={Libriary} /> */}
-                    <Route path={"/films"} component={Films} />
-                </Switch>
-            </BrowserRouter>
-            <Footer />
-        </div>
-    );
+    render() {
+        return (
+            <div className="App">
+                <Header />
+                <BrowserRouter>
+                    <Switch>
+                        <Route path={"/"} exact component={Home} />
+                        <Route path={"/zkt_info"} component={Zkt_info} />
+                        <Route path={"/zkt_course"} component={Zkt_course} />
+                        <Route path={"/auth/login"} component={SignIn} />
+                        <Route path={"/auth/register"} component={SignUp} />
+
+                        {/* <Route path={'/about'} component={About} /> */}
+                        {/* <Route path={'/lectures'} component={Lectures} /> */}
+                        {/* <Route path={'/library'} component={Libriary} /> */}
+                        <Route path={"/films"} component={Films} />
+                    </Switch>
+                </BrowserRouter>
+                <Footer />
+            </div>
+        );
+    }
 }
-
-export default App;

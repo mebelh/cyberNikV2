@@ -13,6 +13,8 @@ const authRoute = require("./routes/auth");
 const MONGO_URI =
     "mongodb+srv://artem:12345@cluster0.6bskz.mongodb.net/CyberIz?retryWrites=true&w=majority";
 
+const userMiddleware = require("./middleware/user");
+
 const store = new MongoStore({
     uri: MONGO_URI,
     collection: "sessions",
@@ -31,9 +33,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(express.json());
 
-app.use("/courses", coursesRoute);
-app.use("/auth", authRoute);
-
 app.use(
     session({
         secret: "hgydl dsjg,da17",
@@ -43,7 +42,11 @@ app.use(
     })
 );
 
+app.use(userMiddleware);
+
 app.use("/courses", coursesRoute);
+app.use("/courses", coursesRoute);
+app.use("/auth", authRoute);
 
 // const User = require("./models/User");
 // const bcrypt = require("bcrypt");
