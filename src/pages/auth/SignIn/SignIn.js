@@ -20,7 +20,8 @@ export default function SignIn({ onUserLogin }) {
 
     const checkLogin = async (e) => {
         e.preventDefault();
-        fetch("http://localhost:3001/auth/login/adm", {
+        console.log(user);
+        fetch("http://localhost:3001/auth/login/adm/", {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -38,10 +39,14 @@ export default function SignIn({ onUserLogin }) {
     return (
         <div className="SignIn">
             <div className="formBgc">
-                <form action="http://localhost:3001/auth/login" method="POST">
+                <form
+                    action="http://localhost:3001/auth/login"
+                    method="POST"
+                    onSubmit={checkLogin}
+                >
                     <Email onLoginChange={onLoginChange} />
                     <Password onPasswordChange={onPasswordChange} />
-                    <SubmitBtn text="Войти" checkLogin={checkLogin} />
+                    <SubmitBtn text="Войти" />
                 </form>
             </div>
         </div>

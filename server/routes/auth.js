@@ -18,6 +18,7 @@ router.post("/login/adm", async (req, res) => {
         );
         if (areSame) {
             const { name, login, courses } = candidate;
+            console.log(candidate);
             res.status(200).send(
                 JSON.stringify({
                     name,
@@ -29,15 +30,6 @@ router.post("/login/adm", async (req, res) => {
             res.send(404);
         }
     }
-
-    // res.send("sssss");
-    // i (req.session.isAuthentificated) {
-    //     res.send({
-    //         email: req.session.user.login,
-    //         name: req.session.user.name,
-    //         courses: req.session.user.courses,
-    //     });
-    // }
 });
 
 router.post("/login", async (req, res) => {

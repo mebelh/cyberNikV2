@@ -1,15 +1,8 @@
 import React from "react";
 
-export default function SubmitBtn({ text, checkLogin }) {
+export default function SubmitBtn({ text }) {
     return (
-        <button
-            className="btn btn-info"
-            type="submit"
-            onClick={(e) => {
-                checkLogin(e);
-                // console.log(e.target);
-            }}
-        >
+        <button className="btn btn-info" type="submit">
             {text}
         </button>
     );
