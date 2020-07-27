@@ -1,11 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import Logo from "../Logo/Logo";
 import logoPath from "./../../img/cyberIzbushkaBlue.png";
 import DropdownBtn from "./../buttons/DropdownBtn";
 import SignBtn from "../buttons/SignBtn";
 
+import { Context } from "../../context";
+
 import "./Header.scss";
+
 export default function Header() {
+    const { onUserLogin } = useContext(Context);
+
+    // const usetLogin = onUserLogin();
+
     return (
         <div className="header">
             <div className="header_left-part">

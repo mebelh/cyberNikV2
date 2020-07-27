@@ -7,14 +7,29 @@ const bcrypt = require("bcrypt");
 const User = require("../models/user");
 
 router.post("/login/adm", async (req, res) => {
-    console.log(req.body);
+    const { login, password } = req.body;
 
-    res.setHeader("Access-Control-Allow-Origin", "*");
-    res.setHeader(
-        "Access-Control-Allow-Headers",
-        "origin, content-type, accept"
-    );
-    res.send("asdss");
+    const candidate = await User.findOne({ login });
+
+    if (candidate) {
+        const areSame = await bcrypt.compare(
+            password.toString(),
+            candidate.password.toString()
+        );
+        if (areSame) {
+            const { name, login, courses } = candidate;
+            res.status(200).send(
+                JSON.stringify({
+                    name,
+                    login,
+                    courses,
+                })
+            );
+        } else {
+            res.send(404);
+        }
+    }
+
     // res.send("sssss");
     // i (req.session.isAuthentificated) {
     //     res.send({
@@ -38,7 +53,7 @@ router.post("/login", async (req, res) => {
             req.session.user = candidate;
             req.session.isAuthentificated = true;
             req.session.save(() => {
-                // res.redirect("http://localhost:3000/");
+                res.redirect("http://localhost:3000");
             });
         }
     } else {

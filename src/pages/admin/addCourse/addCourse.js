@@ -2,11 +2,11 @@ import React from "react";
 import "./AddCourse.scss";
 export default function AddCourse() {
     return (
-        <div className="addCourse">
+        <form action="http://localhost:3001/admin/addcourse">
             <h2>Добавить курс:</h2>
             <label>
                 <span>Имя курса:</span>
-                <input type="text" />
+                <input type="text" name="name" />
             </label>
             <div>
                 <span>Цвет имени курса:</span>
@@ -30,6 +30,9 @@ export default function AddCourse() {
                     cols="80"
                 />
             </div>
-        </div>
+            <button type="submit" className="btn btn-success">
+                Добавить курс
+            </button>
+        </form>
     );
 }
