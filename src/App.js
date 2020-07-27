@@ -8,17 +8,21 @@ import Zkt_info from "./pages/courses/Zkt/Zkt_info/Zkt_info";
 import Zkt_course from "./pages/courses/Zkt/Zkt_course/Zkt_course";
 import SignIn from "./pages/auth/SignIn/SignIn";
 import SignUp from "./pages/auth/SignUp/SignUp";
-
+import Users from "./pages/admin/Users/Users"
 import Films from "./pages/Films/Films";
+import AdminHeader from "./pages/admin/AdminHeader/AdminHeader"
 
 import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import "./App.scss";
 
+import PageaddCourse from "./pages/admin/PageAddCourse/PageAddCourse";
+
 function App() {
     return (
         <div className="App">
             <Header />
+            <AdminHeader />
             <BrowserRouter>
                 <Switch>
                     <Route path={"/"} exact component={Home} />
@@ -26,7 +30,8 @@ function App() {
                     <Route path={"/zkt_course"} component={Zkt_course} />
                     <Route path={"/auth/signin"} component={SignIn} />
                     <Route path={"/auth/signup"} component={SignUp} />
-
+                    <Route path={"/admin/addCourse"} component={PageaddCourse} />
+                    <Route path={"/admin/users"} component={Users} />
                     {/* <Route path={'/about'} component={About} /> */}
                     {/* <Route path={'/lectures'} component={Lectures} /> */}
                     {/* <Route path={'/library'} component={Libriary} /> */}

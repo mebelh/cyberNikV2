@@ -13,7 +13,7 @@ export default function SignIn() {
           <Name />
           <Email />
           <Password />
-          <SubmitBtn text='Войти' />
+          <SubmitBtn text='Регистрация' />
         </form>
       </div>
     </div>

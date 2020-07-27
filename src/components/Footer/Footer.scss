@@ -8,15 +8,19 @@
   color: #fff;
   padding: 10px;
 
+  
+  a {
+    text-decoration: none;
+    color: whitesmoke;
+    :hover {
+      text-decoration: none;
+      color: whitesmoke;
+    }
+  }
   &__info {
     display: flex;
     flex-direction: column;
     list-style: none;
-    
-    a {
-      text-decoration: none;
-      color: whitesmoke;
-    }
   }
 
 }
