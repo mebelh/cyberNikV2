@@ -1,3 +1,12 @@
-import Logo from "./Logo";
+import React from 'react'
 
-export default Logo;
+export default function Logo({ path, height = '50px' }) {
+
+  return (
+    <a href="/">
+      <img src={path}
+        height={height}
+        alt="Logo-white" />
+    </a>
+  )
+}

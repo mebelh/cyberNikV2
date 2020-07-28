@@ -3,14 +3,15 @@ import React, { useState, useContext } from "react";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 
-import Home from "./pages/Home/Home";
-import Zkt_info from "./pages/courses/Zkt/Zkt_info/Zkt_info";
-import Zkt_course from "./pages/courses/Zkt/Zkt_course/Zkt_course";
-import SignIn from "./pages/auth/SignIn/SignIn";
-import SignUp from "./pages/auth/SignUp/SignUp";
-import Users from "./pages/admin/Users/Users";
-import Films from "./pages/Films/Films";
-import AdminHeader from "./pages/admin/AdminHeader/AdminHeader";
+import Home from "./components/pages/Home";
+import Course from "./components/pages/Course";
+import Course_info from "components/pages/Course_info";
+import SignIn from "./components/pages/auth/SignIn";
+import SignUp from "./components/pages/auth/SignUp";
+import Users from "./components/admin/Users";
+// import Films from "./components/pages/courses/Films";
+import AdminHeader from "./components/admin/AdminHeader";
+import PageaddCourse from "./components/pages/PageAddCourse";
 
 import { Context } from "./context";
 
@@ -18,7 +19,6 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import "./App.scss";
 
-import PageaddCourse from "./pages/admin/PageAddCourse/PageAddCourse";
 
 export default function App() {
     const [user, setUser] = useState(undefined);
@@ -35,19 +35,16 @@ export default function App() {
                 <BrowserRouter>
                     <Switch>
                         <Route path={"/"} exact component={Home} />
-                        <Route path={"/zkt_info"} component={Zkt_info} />
-                        <Route path={"/zkt_course"} component={Zkt_course} />
+                        <Route path={"/course_info"} component={Course_info} />
+                        <Route path={"/course"} component={Course} />
                         <Route path={"/auth/login"} component={SignIn} />
                         <Route path={"/auth/register"} component={SignUp} />
-                        <Route
-                            path={"/admin/addCourse"}
-                            component={PageaddCourse}
-                        />
+                        <Route path={"/admin/addCourse"} component={PageaddCourse} />
                         <Route path={"/admin/users"} component={Users} />
                         {/* <Route path={'/about'} component={About} /> */}
                         {/* <Route path={'/lectures'} component={Lectures} /> */}
                         {/* <Route path={'/library'} component={Libriary} /> */}
-                        <Route path={"/films"} component={Films} />
+                        {/* <Route path={"/films"} component={Films} /> */}
                     </Switch>
                 </BrowserRouter>
                 <Footer />
