@@ -4,9 +4,12 @@ import AddModules from "components/admin/AddModules";
 
 export default function PageAddCourse() {
     return (
-        <div>
+        <form action="http://localhost:3001/courses/add" method="post">
             <AddCourse />
             <AddModules />
-        </div>
+            <button type="submit" className="btn btn-success">
+                Добавить курс
+            </button>
+        </form>
     );
 }

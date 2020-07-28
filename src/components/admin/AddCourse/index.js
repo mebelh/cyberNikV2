@@ -2,25 +2,30 @@ import React from "react";
 import "./style.scss";
 export default function AddCourse() {
     return (
-        <form action="http://localhost:3001/admin/addcourse">
+        <form action="http://localhost:3001/course/add">
             <h2>Добавить курс:</h2>
             <label>
                 <span>Имя курса:</span>
-                <input type="text" name="name" />
+                <input type="text" name="courseName" />
             </label>
             <div>
                 <span>Цвет имени курса:</span>
-                <input type="color" />
+                <input type="color" name="courseNameColor" />
             </div>
             <div>
                 <span>Цвет фона:</span>
-                <input type="color" />
+                <input type="color" name="backgroundColor" />
+            </div>
+            <div>
+                <span>Ссылка на триал видео:</span>
+                <input type="text" name="linkOnTrialVideo" />
             </div>
             <div>
                 <textarea
                     placeholder="Короткое описание курса"
                     rows="8"
                     cols="80"
+                    name="shortDescription"
                 />
             </div>
             <div>
@@ -28,11 +33,9 @@ export default function AddCourse() {
                     placeholder="Описание каждого модуля"
                     rows="12"
                     cols="80"
+                    name="description"
                 />
             </div>
-            <button type="submit" className="btn btn-success">
-                Добавить курс
-            </button>
         </form>
     );
 }
