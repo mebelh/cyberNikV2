@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -8,6 +8,7 @@ import Zkt_info from "./pages/courses/Zkt/Zkt_info/Zkt_info";
 import Zkt_course from "./pages/courses/Zkt/Zkt_course/Zkt_course";
 import SignIn from "./pages/auth/SignIn/SignIn";
 import SignUp from "./pages/auth/SignUp/SignUp";
+import SignOut from "./pages/auth/SignOut";
 import Users from "./pages/admin/Users/Users";
 import Films from "./pages/Films/Films";
 import AdminHeader from "./pages/admin/AdminHeader/AdminHeader";
@@ -21,14 +22,23 @@ import "./App.scss";
 import PageaddCourse from "./pages/admin/PageAddCourse/PageAddCourse";
 
 export default function App() {
-    const [user, setUser] = useState(undefined);
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        const raw = localStorage.getItem("user") || {};
+        setUser(JSON.parse(raw));
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("user", JSON.stringify(user));
+    }, [user]);
 
     const onUserLogin = (user) => {
         setUser(user);
     };
 
     return (
-        <Context.Provider value={{ onUserLogin, user }}>
+        <Context.Provider value={{ onUserLogin, setUser, user }}>
             <div className="App">
                 <Header />
                 <AdminHeader />
@@ -39,6 +49,7 @@ export default function App() {
                         <Route path={"/zkt_course"} component={Zkt_course} />
                         <Route path={"/auth/login"} component={SignIn} />
                         <Route path={"/auth/register"} component={SignUp} />
+                        <Route path={"/auth/logout"} component={SignOut} />
                         <Route
                             path={"/admin/addCourse"}
                             component={PageaddCourse}

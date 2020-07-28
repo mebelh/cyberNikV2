@@ -14,11 +14,11 @@ const Greetings = ({ name }) => {
 
     if (hours > 0 && hours < 6) {
         return <span>Доброй ночи {name}</span>;
-    } else if (hours > 6 && hours < 12) {
+    } else if ((hours) => 6 && hours < 12) {
         return <span>Доброе утро {name}</span>;
-    } else if (hours > 12 && hours < 18) {
+    } else if ((hours) => 12 && hours < 18) {
         return <span>Добрый день {name}</span>;
-    } else if (hours > 18 && hours < 24) {
+    } else if ((hours) => 18 && hours <= 24) {
         return <span>Добрый вечер {name}</span>;
     }
 };
@@ -29,22 +29,29 @@ export default function Header() {
     // const usetLogin = onUserLogin();
 
     const SignButtons = () => {
-        // if (user.ok) {
-        return (
-            <div className="header_right-part">
+        if (!user.ok) {
+            return (
+                <div className="header_right-part">
+                    <SignBtn
+                        label="Войти"
+                        href="/auth/login"
+                        bgc="rgb(26, 142, 250)"
+                    />
+                    <SignBtn
+                        label="Регистрация"
+                        href="/auth/register"
+                        bgc="rgb(24, 107, 185)"
+                    />
+                </div>
+            );
+        } else
+            return (
                 <SignBtn
-                    label="Войти"
-                    href="/auth/login"
-                    bgc="rgb(26, 142, 250)"
+                    label="Выйти"
+                    href="/auth/logout"
+                    bgc="rgb(153, 36, 0)"
                 />
-                <SignBtn
-                    label="Регистрация"
-                    href="/auth/register"
-                    bgc="rgb(24, 107, 185)"
-                />
-            </div>
-        );
-        // }
+            );
     };
 
     return (
@@ -54,7 +61,7 @@ export default function Header() {
                 <DropdownBtn className="btn header__btn" />
             </div>
             <SignButtons />
-            <Greetings name={"Artem"} />
+            <Greetings name={user.login} />
         </div>
     );
 }

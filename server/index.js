@@ -71,6 +71,7 @@ const start = async () => {
         //     const user = new User({
         //         login: "admin",
         //         password: await bcrypt.hash("admin", 12),
+        //         isAdmin: true,
         //     });
         //     await user.save();
         // }
