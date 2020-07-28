@@ -6,6 +6,8 @@ import SubmitBtn from "../authComponents/SubmitBtn";
 
 import { Context } from "../../../context";
 
+import Message from "./../message";
+
 export default function SignIn() {
     const { onUserLogin } = useContext(Context);
 
@@ -44,6 +46,7 @@ export default function SignIn() {
     return (
         <div className="SignIn">
             <div className="formBgc">
+                <Message text="Hello" />
                 <form
                     action="http://localhost:3001/auth/login"
                     method="POST"

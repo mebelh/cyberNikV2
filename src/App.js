@@ -28,7 +28,7 @@ export default function App() {
     };
 
     return (
-        <Context.Provider value={{ onUserLogin }}>
+        <Context.Provider value={{ onUserLogin, user }}>
             <div className="App">
                 <Header />
                 <AdminHeader />

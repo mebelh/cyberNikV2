@@ -5,6 +5,8 @@ const Course = require("../models/course");
 const router = Router();
 
 router.post("/add", async (req, res) => {
+    console.log(req.body);
+
     if (req.session.isAdmin && req.session.isAuthentificated) {
         const {
             courseName,
@@ -23,7 +25,6 @@ router.post("/add", async (req, res) => {
         });
         await newCourse.save();
     } else {
-        res.send(403);
         res.redirect("/auth/login");
     }
 });
