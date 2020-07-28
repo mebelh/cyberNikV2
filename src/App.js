@@ -25,7 +25,7 @@ export default function App() {
 
     const onUserLogin = (user) => {
         console.log(user);
-        setUser({ ...user });
+        setUser(user);
     };
 
     return (

@@ -4,24 +4,28 @@ import Email from "../authComponents/Email";
 import Password from "../authComponents/Password";
 import SubmitBtn from "../authComponents/SubmitBtn";
 
-export default function SignIn({ onUserLogin }) {
+import { Context } from "../../../context";
+
+export default function SignIn() {
+    const { onUserLogin } = useContext(Context);
+
     const [user, setUser] = useState({
         login: "",
         password: "",
     });
 
     const onLoginChange = (login) => {
-        setUser({ login });
+        setUser({ ...user, login });
     };
 
     const onPasswordChange = (password) => {
-        setUser({ password });
+        setUser({ ...user, password });
     };
 
     const checkLogin = async (e) => {
         e.preventDefault();
-        console.log(user);
-        fetch("http://localhost:3001/auth/login/adm/", {
+        // console.log(user);
+        fetch("http://localhost:3001/auth/login/adm", {
             method: "POST",
             headers: {
                 Accept: "application/json",
@@ -30,8 +34,10 @@ export default function SignIn({ onUserLogin }) {
             body: JSON.stringify({ ...user }),
         }).then(async (res) => {
             console.log(await res.json());
+            // const user = await res.json();
+            console.log(onUserLogin);
             if (res) {
-                onUserLogin(await res.json());
+                onUserLogin(res);
             }
         });
     };
