@@ -34,11 +34,9 @@ export default function SignIn() {
             body: JSON.stringify({ ...user }),
         }).then(async (res) => {
             const user = await res.json();
-
+            onUserLogin(user);
             if (user.ok) {
-                onUserLogin(user);
-            } else {
-                console.log("Неправильный логин или пароль");
+                window.location.replace("/");
             }
         });
     };

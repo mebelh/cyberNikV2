@@ -23,6 +23,7 @@ router.post("/login/adm", async (req, res) => {
                     name,
                     login,
                     courses,
+                    ok: true,
                 })
             );
         } else {
