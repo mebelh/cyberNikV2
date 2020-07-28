@@ -24,7 +24,6 @@ export default function App() {
     const [user, setUser] = useState(undefined);
 
     const onUserLogin = (user) => {
-        console.log(user);
         setUser(user);
     };
 

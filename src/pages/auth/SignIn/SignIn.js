@@ -33,11 +33,12 @@ export default function SignIn() {
             },
             body: JSON.stringify({ ...user }),
         }).then(async (res) => {
-            console.log(await res.json());
-            // const user = await res.json();
-            console.log(onUserLogin);
-            if (res) {
-                onUserLogin(res);
+            const user = await res.json();
+
+            if (user.ok) {
+                onUserLogin(user);
+            } else {
+                console.log("Неправильный логин или пароль");
             }
         });
     };

@@ -26,7 +26,7 @@ router.post("/login/adm", async (req, res) => {
                 })
             );
         } else {
-            res.send(404);
+            res.send({ ok: false });
         }
     }
 });
