@@ -8,6 +8,22 @@ import { Context } from "../../context";
 
 import "./Header.scss";
 
+
+const Greetings = ({ name }) => {
+    let time = new Date()
+    let hours = time.getHours();
+
+    if (hours > 0 && hours < 6) {
+        return <span>Доброй ночи {name}</span>
+    } else if (hours > 6 && hours < 12) {
+        return <span>Доброе утро {name}</span>
+    } else if (hours > 12 && hours < 18) {
+        return <span>Добрый день {name}</span>
+    } else if (hours > 18 && hours < 24) {
+        return <span>Добрый вечер {name}</span>
+    }
+}
+
 export default function Header() {
     const { onUserLogin } = useContext(Context);
 
@@ -19,6 +35,8 @@ export default function Header() {
                 <Logo className="logo" path={logoPath} />
                 <DropdownBtn className="btn header__btn" />
             </div>
+
+            <Greetings name={"Artem"} />
             <div className="header_right-part">
                 <SignBtn
                     label="Войти"
