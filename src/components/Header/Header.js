@@ -61,7 +61,7 @@ export default function Header() {
                 <DropdownBtn className="btn header__btn" />
             </div>
             <SignButtons />
-            <Greetings name={user.login} />
+            <Greetings name={user.name || user.login} />
         </div>
     );
 }
