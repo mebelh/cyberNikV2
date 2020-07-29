@@ -10,13 +10,22 @@ import DropdownButton from "react-bootstrap/DropdownButton";
 
 import Button from "../Button";
 
-const DropdownBtn = () => {
+const DropdownBtn = ({ login }) => {
     return (
         <div>
             <DropdownButton id="dropdown-basic-button" title="Изучить">
                 <Dropdown.Item href="/lectures">Лекции</Dropdown.Item>
                 <Dropdown.Item href="/library">Библиотека</Dropdown.Item>
                 <Dropdown.Item href="/films">Учебные фильмы</Dropdown.Item>
+                {login ? (
+                    <Button
+                        label="Выйти"
+                        href="/auth/logout"
+                        bgc="rgb(153, 36, 0)"
+                    />
+                ) : (
+                    <></>
+                )}
             </DropdownButton>
         </div>
     );
@@ -25,8 +34,6 @@ const DropdownBtn = () => {
 const Greetings = ({ name }) => {
     let time = new Date();
     let hours = time.getHours();
-
-    console.log(time.getHours());
 
     if (hours > 0 && hours < 6) {
         return <span>Доброй ночи {name}</span>;
@@ -45,36 +52,29 @@ export default function Header() {
     // const usetLogin = onUserLogin();
 
     const SignButtons = () => {
-        if (!user.ok) {
-            return (
-                <div className="header_right-part">
-                    <Button
-                        label="Войти"
-                        href="/auth/login"
-                        bgc="rgb(26, 142, 250)"
-                    />
-                    <Button
-                        label="Регистрация"
-                        href="/auth/register"
-                        bgc="rgb(24, 107, 185)"
-                    />
-                </div>
-            );
-        } else
-            return (
+        return !user.ok ? (
+            <div className="header_right-part">
                 <Button
-                    label="Выйти"
-                    href="/auth/logout"
-                    bgc="rgb(153, 36, 0)"
+                    label="Войти"
+                    href="/auth/login"
+                    bgc="rgb(26, 142, 250)"
                 />
-            );
+                <Button
+                    label="Регистрация"
+                    href="/auth/register"
+                    bgc="rgb(24, 107, 185)"
+                />
+            </div>
+        ) : (
+            <></>
+        );
     };
 
     return (
         <div className="header">
             <div className="header_left-part">
                 <Logo className="logo" path={logoPath} />
-                <DropdownBtn className="btn header__btn" />
+                <DropdownBtn className="btn header__btn" login={true} />
             </div>
             <SignButtons />
             {user.ok ? <Greetings name={user.name || user.login} /> : <></>}
