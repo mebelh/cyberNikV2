@@ -22,6 +22,22 @@ import "./App.scss";
 
 
 export default function App() {
+
+
+    let courseProps = {
+        videoURL: "https://www.youtube.com/watch?v=zLcf3sslAZ8",
+        shortDesc: "Основы верстки с нуля. HTML, CSS, Flexbox. Верстка проекта.",
+        longDesc: `1. В первой части мы узнаем кто такой frontend разработчик, познакомимся инструментами и изучим синтаксис HTML
+        2. Во второй части мы перейдем к знакомству с CSS, узнаем о приоритетах стилей, посмотрим на панель разработчика, узнаем базовые свойства, поработаем с позиционированием и изучим Flexbox.
+        3. В третьей части мы сверстаем небольшую страницу где применим все то что прошли ран
+        4. Верстка проекта по макету.
+        5. В четвертой части курса мы познакомимся с основами CSS Grid.`
+    }
+
+    let longDescArr = courseProps.longDesc.split('\n')
+
+
+
     const [user, setUser] = useState({});
 
     useEffect(() => {
@@ -49,7 +65,9 @@ export default function App() {
                     <Switch>
                         <Route path={"/"} exact component={Home} />
                         <Route path={"/course_info"} component={Course_info} />
-                        <Route path={"/course"} component={Course} />
+                        <Route path={"/course"}>
+                            <Course videoURL={courseProps.videoURL} shortDesc={courseProps.shortDesc} longDescArr={longDescArr} />
+                        </Route>
                         <Route path={"/auth/login"} component={SignIn} />
                         <Route path={"/auth/register"} component={SignUp} />
                         <Route path={"/auth/logout"} component={SignOut} />
