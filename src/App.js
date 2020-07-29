@@ -25,7 +25,10 @@ export default function App() {
     const [user, setUser] = useState({});
 
     useEffect(() => {
-        const raw = localStorage.getItem("user") || {};
+        const raw =
+            localStorage.getItem("user") ||
+            localStorage.getItem("user") ||
+            JSON.stringify({});
         setUser(JSON.parse(raw));
     }, []);
 
