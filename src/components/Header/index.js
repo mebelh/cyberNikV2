@@ -1,15 +1,14 @@
-import React, { useContext } from 'react'
+import React, { useContext } from "react";
 import { Context } from "../../context";
 import "./style.scss";
 
 import Logo from "../Logo";
 import logoPath from "./../../img/cyberIzbushkaBlue.png";
 
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from "react-bootstrap/Dropdown";
+import DropdownButton from "react-bootstrap/DropdownButton";
 
 import Button from "../Button";
-
 
 const DropdownBtn = () => {
     return (
@@ -20,20 +19,22 @@ const DropdownBtn = () => {
                 <Dropdown.Item href="/films">Учебные фильмы</Dropdown.Item>
             </DropdownButton>
         </div>
-    )
-}
+    );
+};
 
 const Greetings = ({ name }) => {
     let time = new Date();
     let hours = time.getHours();
 
+    console.log(time.getHours());
+
     if (hours > 0 && hours < 6) {
         return <span>Доброй ночи {name}</span>;
-    } else if ((hours) => 6 && hours < 12) {
+    } else if (hours >= 6 && hours < 12) {
         return <span>Доброе утро {name}</span>;
-    } else if ((hours) => 12 && hours < 18) {
+    } else if (hours >= 12 && hours < 18) {
         return <span>Добрый день {name}</span>;
-    } else if ((hours) => 18 && hours <= 24) {
+    } else if (hours >= 18 && hours <= 24) {
         return <span>Добрый вечер {name}</span>;
     }
 };
