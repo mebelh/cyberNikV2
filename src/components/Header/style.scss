@@ -5,16 +5,16 @@
   padding: 20px 30px;
   background-color: #fcfcfc;
 
-  &__left-part, &__right-part {
+  &_left-part, &_right-part {
     display: flex;
     align-items: center;
   }
 
-  &__left-part > * {
+  &_left-part > * {
     margin-right: 50px;
   }
 
-  &__right-part > * {
+  &_right-part > * {
     margin-left: 35px;
     > * {
       margin-left: 7px;

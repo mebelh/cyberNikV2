@@ -1,0 +1,19 @@
+.lecture {
+  display: flex;
+  justify-content: space-between;
+  text-decoration: none;
+  
+  &:hover > *{
+    color: rgb(192, 192, 192);
+  }
+}
+
+.lecture__name, .lecture__duration {
+  color: rgb(139, 139, 139);
+
+}
+
+
+.lecture__name {
+  margin-left: 30px;
+}

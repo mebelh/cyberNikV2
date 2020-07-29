@@ -6,7 +6,7 @@ import SideMenu from "components/SideMenu";
 
 import "./style.scss";
 
-export default function Zkt_course({ videoURL, shortDesc, longDescArr }) {
+export default function Course({ videoURL, shortDesc, longDescArr }) {
   return (
     <div className="Course">
       <div>
@@ -19,7 +19,7 @@ export default function Zkt_course({ videoURL, shortDesc, longDescArr }) {
         />
         <Info_course className="Info_course" shortDesc={shortDesc} longDescArr={longDescArr} />
       </div>
-      <SideMenu className="SideMenu_course" />
+      <SideMenu className="SideMenu" />
     </div>
   );
 }

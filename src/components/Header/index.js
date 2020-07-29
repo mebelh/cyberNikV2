@@ -13,19 +13,15 @@ import Button from "../Button";
 const DropdownBtn = ({ login }) => {
     return (
         <div>
-            <DropdownButton id="dropdown-basic-button" title="Изучить">
+            <DropdownButton id="dropdown-basic-button" title="Меню">
                 <Dropdown.Item href="/lectures">Лекции</Dropdown.Item>
                 <Dropdown.Item href="/library">Библиотека</Dropdown.Item>
                 <Dropdown.Item href="/films">Учебные фильмы</Dropdown.Item>
                 {login ? (
-                    <Button
-                        label="Выйти"
-                        href="/auth/logout"
-                        bgc="rgb(153, 36, 0)"
-                    />
+                    <Dropdown.Item href="/auth/logout" style={{ borderTop: '2px solid #80aaff' }}>Выйти</Dropdown.Item>
                 ) : (
-                    <></>
-                )}
+                        <></>
+                    )}
             </DropdownButton>
         </div>
     );
@@ -66,8 +62,8 @@ export default function Header() {
                 />
             </div>
         ) : (
-            <></>
-        );
+                <></>
+            );
     };
 
     return (

@@ -4,11 +4,11 @@
 .Info_course {
   grid-area: 'Info_course'
 }
-.SideMenu_course {
+.SideMenu {
   grid-area: "SideMenu_course"
 }
 
-.Zkt_course {
+.Course {
   display: grid;
   grid-template-columns: auto 400px;
   // grid-template-areas: 

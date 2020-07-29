@@ -82,7 +82,9 @@ export default function App() {
                         {/* <Route path={"/films"} component={Films} /> */}
                     </Switch>
                 </BrowserRouter>
-                <Footer />
+                <div style={{ marginTop: "250px" }}>
+                    <Footer />
+                </div>
             </div>
         </Context.Provider>
     );
