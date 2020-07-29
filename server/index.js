@@ -56,7 +56,7 @@ app.use(userMiddleware);
 app.use("/courses", coursesRoute);
 app.use("/auth", authRoute);
 
-// const User = require("./models/User");
+const User = require("./models/user");
 // const bcrypt = require("bcrypt");
 
 const start = async () => {
@@ -66,11 +66,12 @@ const start = async () => {
             useNewUrlParser: true,
             useFindAndModify: false,
         });
-        // const admin = await User.findOne();
+        // const admin = await User.findOne({ login: "admin" });
         // if (!admin) {
         //     const user = new User({
         //         login: "admin",
         //         password: await bcrypt.hash("admin", 12),
+        //         isAdmin: true,
         //     });
         //     await user.save();
         // }

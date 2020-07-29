@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useEffect } from "react";
 
 import Header from "./components/Header";
 import Footer from "./components/Footer";
@@ -8,6 +8,7 @@ import Course from "./components/pages/Course";
 import Course_info from "components/pages/Course_info";
 import SignIn from "./components/pages/auth/SignIn";
 import SignUp from "./components/pages/auth/SignUp";
+import SignOut from "./components/auth/SignOut"
 import Users from "./components/admin/Users";
 // import Films from "./components/pages/courses/Films";
 import AdminHeader from "./components/admin/AdminHeader";
@@ -21,14 +22,26 @@ import "./App.scss";
 
 
 export default function App() {
-    const [user, setUser] = useState(undefined);
+    const [user, setUser] = useState({});
+
+    useEffect(() => {
+        const raw =
+            localStorage.getItem("user") ||
+            localStorage.getItem("user") ||
+            JSON.stringify({});
+        setUser(JSON.parse(raw));
+    }, []);
+
+    useEffect(() => {
+        localStorage.setItem("user", JSON.stringify(user));
+    }, [user]);
 
     const onUserLogin = (user) => {
         setUser(user);
     };
 
     return (
-        <Context.Provider value={{ onUserLogin, user }}>
+        <Context.Provider value={{ onUserLogin, setUser, user }}>
             <div className="App">
                 <Header />
                 <AdminHeader />
@@ -39,7 +52,11 @@ export default function App() {
                         <Route path={"/course"} component={Course} />
                         <Route path={"/auth/login"} component={SignIn} />
                         <Route path={"/auth/register"} component={SignUp} />
-                        <Route path={"/admin/addCourse"} component={PageaddCourse} />
+                        <Route path={"/auth/logout"} component={SignOut} />
+                        <Route
+                            path={"/admin/addCourse"}
+                            component={PageaddCourse}
+                        />
                         <Route path={"/admin/users"} component={Users} />
                         {/* <Route path={'/about'} component={About} /> */}
                         {/* <Route path={'/lectures'} component={Lectures} /> */}
