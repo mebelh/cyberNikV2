@@ -57,7 +57,7 @@ export default function Header() {
                 </div>
             );
     };
-
+}
 // return (
 //     <div className="header">
 //         <div className="header_left-part">
@@ -68,4 +68,3 @@ export default function Header() {
 //         <Greetings name={"Artem"} />
 //     </div>
 // );
-

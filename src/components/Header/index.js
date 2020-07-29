@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext } from 'react'
 import { Context } from "../../context";
 import "./style.scss";
 
@@ -24,44 +24,29 @@ const DropdownBtn = () => {
 }
 
 const Greetings = ({ name }) => {
-    let time = new Date()
-    setInterval(() => { time = new Date() }, 3600)
-
+    let time = new Date();
     let hours = time.getHours();
-    let ans = '';
 
     if (hours > 0 && hours < 6) {
-        ans = `Доброй ночи ${name}`
-    } else if (hours > 6 && hours < 12) {
-        ans = `Доброе утро ${name}`
-    } else if (hours > 12 && hours < 18) {
-        ans = `Добрый день ${name}`
-    } else if (hours > 18 && hours < 24) {
-        ans = `Добрый вечер ${name}`
+        return <span>Доброй ночи {name}</span>;
+    } else if ((hours) => 6 && hours < 12) {
+        return <span>Доброе утро {name}</span>;
+    } else if ((hours) => 12 && hours < 18) {
+        return <span>Добрый день {name}</span>;
+    } else if ((hours) => 18 && hours <= 24) {
+        return <span>Добрый вечер {name}</span>;
     }
-
-    return <div style={{
-        color: '#00a3cc',
-        fontSize: "20px"
-    }}> {ans}</div >
-
-}
-
-
+};
 
 export default function Header() {
-    const { onUserLogin } = useContext(Context);
+    const { user } = useContext(Context);
 
-    return (
-        <div className="header">
-            <div className="header__left-part">
-                <Logo className="logo header__logo" path={logoPath} />
-                <DropdownBtn className="btn header__btn-learn" />
-            </div>
+    // const usetLogin = onUserLogin();
 
-            <div className="header__right-part">
-                <Greetings className="header__greetings" name={"Artem"} />
-                <div>
+    const SignButtons = () => {
+        if (!user.ok) {
+            return (
+                <div className="header_right-part">
                     <Button
                         label="Войти"
                         href="/auth/login"
@@ -73,7 +58,25 @@ export default function Header() {
                         bgc="rgb(24, 107, 185)"
                     />
                 </div>
+            );
+        } else
+            return (
+                <Button
+                    label="Выйти"
+                    href="/auth/logout"
+                    bgc="rgb(153, 36, 0)"
+                />
+            );
+    };
+
+    return (
+        <div className="header">
+            <div className="header_left-part">
+                <Logo className="logo" path={logoPath} />
+                <DropdownBtn className="btn header__btn" />
             </div>
+            <SignButtons />
+            {user.ok ? <Greetings name={user.name || user.login} /> : <></>}
         </div>
     );
 }

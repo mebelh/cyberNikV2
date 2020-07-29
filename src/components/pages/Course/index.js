@@ -1,6 +1,8 @@
 import React from 'react'
 import ReactPlayer from 'react-player'
 import Info_course from '../../Info_course'
+
+// import SideMenu from './../../SideMenu'
 import SideMenu from 'components/SideMenu'
 
 // import '../../../../SideMenu_course/node_modules/bootstrap/dist/css/bootstrap.css';
