@@ -12,6 +12,8 @@ const Greetings = ({ name }) => {
     let time = new Date();
     let hours = time.getHours();
 
+    console.log(hours);
+
     if (hours > 0 && hours < 6) {
         return <span>Доброй ночи {name}</span>;
     } else if ((hours) => 6 && hours < 12) {
