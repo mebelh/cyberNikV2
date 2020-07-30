@@ -6,7 +6,6 @@ export default function AddModules() {
 
     // const arr = Module(modulesNumber)
 
-
     return (
         <div className="AddModules">
             <div>
