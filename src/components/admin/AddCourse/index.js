@@ -4,10 +4,10 @@ import "./style.scss";
 export default function AddCourse({ setCourse, course }) {
     const onCourseInfoAdd = (key, label) => {
         console.log("asd");
-        const newInf = { ...course };
-        newInf[key] = label;
-        console.log(newInf);
-        setCourse(newInf);
+        // const newInf = { ...course };
+        // newInf[key] = label;
+        // console.log(newInf);
+        // setCourse(newInf);
     };
 
     return (
@@ -25,7 +25,7 @@ export default function AddCourse({ setCourse, course }) {
                 />
             </label>
             <div>
-                <span>Цвет имени курса:</span>
+                {/* <span>Цвет имени курса:</span> */}
                 <input
                     type="color"
                     name="courseNameColor"
