@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./style.scss";
 import Module_Groupe from "./Module_Groupe/ModuleGroupe";
-export default function AddModules() {
+export default function AddModules({ setCourse, course }) {
     const [modulesNumber, setModulesNumber] = useState(1);
 
     // const arr = Module(modulesNumber)

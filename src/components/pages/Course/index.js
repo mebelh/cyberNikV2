@@ -7,19 +7,23 @@ import SideMenu from "components/SideMenu";
 import "./style.scss";
 
 export default function Course({ videoURL, shortDesc, longDescArr }) {
-  return (
-    <div className="Course">
-      <div>
-        <ReactPlayer
-          className="ReactPlayer"
-          url={videoURL}
-          width="100%"
-          height="400px"
-          controls={true}
-        />
-        <Info_course className="Info_course" shortDesc={shortDesc} longDescArr={longDescArr} />
-      </div>
-      <SideMenu className="SideMenu" />
-    </div>
-  );
+    return (
+        <div className="Course">
+            <div>
+                <ReactPlayer
+                    className="ReactPlayer"
+                    url={videoURL}
+                    width="100%"
+                    height="400px"
+                    controls={true}
+                />
+                <Info_course
+                    className="Info_course"
+                    shortDesc={shortDesc}
+                    longDescArr={longDescArr}
+                />
+            </div>
+            <SideMenu className="SideMenu" />
+        </div>
+    );
 }

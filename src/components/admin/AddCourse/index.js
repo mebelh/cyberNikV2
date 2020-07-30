@@ -1,6 +1,6 @@
 import React from "react";
 import "./style.scss";
-export default function AddCourse() {
+export default function AddCourse({ setCourse, course }) {
     return (
         <form action="http://localhost:3001/course/add" method="POST">
             <h2>Добавить курс:</h2>
