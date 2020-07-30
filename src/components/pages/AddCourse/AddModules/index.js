@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./style.scss";
-import Module_Groupe from "./ModuleGroupe";
+import ModuleGroupe from "./ModuleGroupe";
 export default function AddModules() {
     const [modulesNumber, setModulesNumber] = useState(1);
 
@@ -18,7 +18,7 @@ export default function AddModules() {
                 />
             </div>
 
-            {Module_Groupe(modulesNumber)}
+            <ModuleGroupe num={modulesNumber} />
         </div>
     );
 }

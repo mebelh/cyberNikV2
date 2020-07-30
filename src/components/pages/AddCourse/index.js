@@ -4,7 +4,8 @@ import AddModules from "./AddModules"
 import Button from "components/Button"
 export default function AddCourse() {
     return (
-        <form className="addCourse" action="http://localhost:3001/course/add" method="POST">
+        <form className="addCourse" onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
+            action="http://localhost:3001/course/add" method="POST">
             <div className="addCourse__left">
                 <h2>Добавить курс:</h2>
                 <label>
