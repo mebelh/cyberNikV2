@@ -1,5 +1,5 @@
 import React from 'react'
-import './Lecture.scss';
+import './style.scss';
 const { v4: uuidv4 } = require("uuid");
 export default function Lecture() {
   return (

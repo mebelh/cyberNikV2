@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import "./style.scss";
-import Module_Groupe from "./Module_Groupe/ModuleGroupe";
-export default function AddModules({ setCourse, course }) {
+import Module_Groupe from "./ModuleGroupe";
+export default function AddModules() {
     const [modulesNumber, setModulesNumber] = useState(1);
 
     // const arr = Module(modulesNumber)
 
     return (
         <div className="AddModules">
-            <label>
+            <div>
                 <span>Количество модулей: </span>
                 <input
                     type="text"
                     value={modulesNumber}
                     onChange={(n) => setModulesNumber(n.target.value)}
                 />
-            </label>
+            </div>
+
             {Module_Groupe(modulesNumber)}
         </div>
     );
