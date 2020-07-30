@@ -7,6 +7,85 @@ import SideMenu from "components/SideMenu";
 import "./style.scss";
 
 export default function Course({ videoURL, shortDesc, longDescArr }) {
+
+  let collapseListID = ["#collapseOne", "#collapseTwo", "#collapseThree", "#collapseForu", "#collapseFive", "#collapseSix", "#collapseSeven"]
+
+  let moduleList = [
+    {
+      moduleName: "Module 1",
+
+      lectures: [
+        {
+          name: "О защите",
+          duration: "49 минут",
+          link: "https://www.youtube.com/watch?v=fuOZZuvKNkI"
+        },
+
+        {
+          name: "О защите",
+          duration: "59 минут",
+          link: "https://www.youtube.com/watch?v=fuOZZuvKNkI"
+        },
+
+        {
+          name: "О защите",
+          duration: "39 минут",
+          link: "https://www.youtube.com/watch?v=fuOZZuvKNkI"
+        }
+      ]
+    },
+
+    {
+      moduleName: "Module 2",
+
+      lectures: [
+        {
+          name: "О защите",
+          duration: "49 минут",
+          link: "https://www.youtube.com/watch?v=fuOZZuvKNkI"
+        },
+
+        {
+          name: "О щите",
+          duration: "59 минут",
+          link: "https://www.youtube.com/watch?v=fuOZZuvKNkI"
+        },
+
+        {
+          name: "О защите",
+          duration: "39 минут",
+          link: "https://www.youtube.com/watch?v=fuOZZuvKNkI"
+        }
+      ]
+    },
+
+    {
+      moduleName: "Module 3",
+
+      lectures: [
+        {
+          name: "О защите",
+          duration: "49 минут",
+          link: "https://www.youtube.com/watch?v=fuOZZuvKNkI"
+        },
+
+        {
+          name: "О защите",
+          duration: "59 минут",
+          link: "https://www.youtube.com/watch?v=fuOZZuvKNkI"
+        },
+
+        {
+          name: "О защите",
+          duration: "39 минут",
+          link: "https://www.youtube.com/watch?v=fuOZZuvKNkI"
+        }
+      ]
+    }
+  ]
+
+
+
   return (
     <div className="Course">
       <div>
@@ -19,7 +98,7 @@ export default function Course({ videoURL, shortDesc, longDescArr }) {
         />
         <Info_course className="Info_course" shortDesc={shortDesc} longDescArr={longDescArr} />
       </div>
-      <SideMenu className="SideMenu" />
+      <SideMenu className="SideMenu" moduleList={moduleList} collapseListID={collapseListID} />
     </div>
   );
 }

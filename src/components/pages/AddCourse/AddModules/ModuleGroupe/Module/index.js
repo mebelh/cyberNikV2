@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Lectures from './../Lectures/Lectures'
-import './Module.scss'
+import Lectures from './Lectures'
+import './style.scss'
 const { v4: uuidv4 } = require("uuid");
 
 export default function Module() {
@@ -20,7 +20,7 @@ export default function Module() {
         <button onClick={() => setNumOfLectures(numOfLectures + 1)}>Добавить видео</button>
         <button onClick={() => (numOfLectures > 0 ? setNumOfLectures(numOfLectures - 1) : console.log("num <= 0"))} > Убрать видео</button>
       </ div>
-      {Lectures(numOfLectures)}
+      <Lectures n={numOfLectures} />
     </React.Fragment>
   )
 }

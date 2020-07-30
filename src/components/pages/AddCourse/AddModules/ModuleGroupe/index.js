@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import Module from './Module/Module'
+import Module from './Module'
 
 export default function ModuleGroupe(num) {
   let arr = []

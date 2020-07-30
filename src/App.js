@@ -12,7 +12,7 @@ import SignOut from "./components/auth/SignOut"
 import Users from "./components/admin/Users";
 // import Films from "./components/pages/courses/Films";
 import AdminHeader from "./components/admin/AdminHeader";
-import PageaddCourse from "./components/pages/PageAddCourse";
+import AddCourse from "./components/pages/AddCourse";
 
 import { Context } from "./context";
 
@@ -64,7 +64,9 @@ export default function App() {
                 <BrowserRouter>
                     <Switch>
                         <Route path={"/"} exact component={Home} />
-                        <Route path={"/course_info"} component={Course_info} />
+                        <Route path={"/course_info"}>
+                            <Course_info videoURL={courseProps.videoURL} shortDesc={courseProps.shortDesc} longDescArr={longDescArr} />
+                        </Route>
                         <Route path={"/course"}>
                             <Course videoURL={courseProps.videoURL} shortDesc={courseProps.shortDesc} longDescArr={longDescArr} />
                         </Route>
@@ -73,7 +75,7 @@ export default function App() {
                         <Route path={"/auth/logout"} component={SignOut} />
                         <Route
                             path={"/admin/addCourse"}
-                            component={PageaddCourse}
+                            component={AddCourse}
                         />
                         <Route path={"/admin/users"} component={Users} />
                         {/* <Route path={'/about'} component={About} /> */}
