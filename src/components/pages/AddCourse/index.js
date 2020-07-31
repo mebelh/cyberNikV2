@@ -7,6 +7,11 @@ export default function AddCourse() {
 
     const onInfAdd = (key, label) => {
         setCourse({ ...course, [key]: label });
+    };
+
+    const fetchCourse = async (e) => {
+        e.preventDefault();
+        // await fetch("http://localhost:3001/admin/addcourse", {});
         console.log(course);
     };
 
@@ -16,6 +21,7 @@ export default function AddCourse() {
             onKeyPress={(e) => {
                 e.key === "Enter" && e.preventDefault();
             }}
+            onSubmit={fetchCourse}
         >
             <div className="addCourse__left">
                 <h2>Добавить курс:</h2>
@@ -89,6 +95,7 @@ export default function AddCourse() {
                     className="addCourse__btn"
                     label="Добавить курс"
                     bgc="#16ba58"
+                    type="submit"
                 />
             </div>
         </form>

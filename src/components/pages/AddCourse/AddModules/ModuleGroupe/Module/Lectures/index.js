@@ -10,7 +10,7 @@ export default function Lectures({ n, changeModule }) {
         const newLectures = [...lectures];
         newLectures[id] = lecture;
         setLectures(newLectures);
-        changeModule("lecturs", lectures);
+        changeModule("lectures", lectures);
     };
 
     for (let i = 0; i < n; i++) {

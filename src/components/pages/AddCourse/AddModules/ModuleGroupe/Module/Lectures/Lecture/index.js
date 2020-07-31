@@ -1,21 +1,22 @@
 import React, { useState } from "react";
 import "./style.scss";
-const { v4: uuidv4 } = require("uuid");
 
 export default function Lecture({ onLacturesChange, num }) {
     const [lecture, setLecture] = useState({});
 
     const onLactureChange = (key, label) => {
         setLecture({ ...lecture, [key]: label });
-        onLacturesChange(lecture, num);
+        onLacturesChange(num, lecture);
+        console.log(lecture);
     };
 
     return (
-        <div key={uuidv4()} className="Lecture">
+        <div key={num} className="Lecture">
             <div>
                 <span>Имя лекции:</span>
                 <input
                     value={lecture.name}
+                    type="text"
                     onChange={({ target }) => {
                         onLactureChange("name", target.value);
                     }}
@@ -25,6 +26,7 @@ export default function Lecture({ onLacturesChange, num }) {
                 <span>Продолжительность:</span>
                 <input
                     value={lecture.duration}
+                    type="text"
                     onChange={({ target }) => {
                         onLactureChange("duration", target.value);
                     }}
@@ -34,6 +36,7 @@ export default function Lecture({ onLacturesChange, num }) {
                 <span>Ссылка:</span>
                 <input
                     value={lecture.link}
+                    type="text"
                     onChange={({ target }) => {
                         onLactureChange("link", target.value);
                     }}

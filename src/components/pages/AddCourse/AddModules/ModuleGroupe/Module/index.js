@@ -22,7 +22,7 @@ export default function Module({ onModuleChange, num }) {
     }, [numOfLectures]);
 
     return (
-        <div key={uuidv4()}>
+        <div key={num}>
             <div className="Module">
                 <div>
                     <span>Имя модуля:</span>
