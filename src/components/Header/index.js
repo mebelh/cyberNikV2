@@ -25,8 +25,8 @@ const DropdownBtn = ({ login }) => {
                         Выйти
                     </Dropdown.Item>
                 ) : (
-                    <></>
-                )}
+                        <></>
+                    )}
             </DropdownButton>
         </div>
     );
@@ -37,13 +37,13 @@ const Greetings = ({ name }) => {
     let hours = time.getHours();
 
     if (hours >= 0 && hours < 6) {
-        return <span>Доброй ночи {name}</span>;
+        return <span className="greetings">Доброй ночи {name}</span>;
     } else if (hours >= 6 && hours < 12) {
-        return <span>Доброе утро {name}</span>;
+        return <span className="greetings">Доброе утро {name}</span>;
     } else if (hours >= 12 && hours < 18) {
-        return <span>Добрый день {name}</span>;
+        return <span className="greetings">Добрый день {name}</span>;
     } else if (hours >= 18 && hours < 24) {
-        return <span>Добрый вечер {name}</span>;
+        return <span className="greetings">Добрый вечер {name}</span>;
     }
 };
 
@@ -67,8 +67,8 @@ export default function Header() {
                 />
             </div>
         ) : (
-            <></>
-        );
+                <></>
+            );
     };
 
     return (

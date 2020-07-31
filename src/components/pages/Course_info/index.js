@@ -108,19 +108,14 @@ export default function Course_info({ videoURL, shortDesc, longDescArr }) {
   ]
 
   return (
-    <div className="coursePage">
+    <div className="course_info">
+      <InviteHeader className="invite_header" shortDesc={shortDesc} longDescArr={longDescArr} />
+
+      <Info_course className="info_course" hortDesc={shortDesc} longDescArr={longDescArr} />
+      <SideMenu className="sidemenu" moduleList={moduleList} />
 
 
-      <div className="courseMaterials">
-        <InviteHeader className="Info_course" shortDesc={shortDesc} longDescArr={longDescArr} />
-
-        <div className="course_info-desc">
-          <Info_course hortDesc={shortDesc} longDescArr={longDescArr} />
-          <SideMenu moduleList={moduleList} />
-        </div>
-
-        {/* <CourseMaterials modules={modules} /> */}
-      </div>
+      {/* <CourseMaterials modules={modules} /> */}
     </div>
   )
 }

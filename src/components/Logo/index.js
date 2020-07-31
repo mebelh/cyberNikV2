@@ -4,7 +4,7 @@ export default function Logo({ path, height = '50px' }) {
 
   return (
     <a href="/">
-      <img src={path}
+      <img className="logo" src={path}
         height={height}
         alt="Logo-white" />
     </a>

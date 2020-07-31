@@ -39,7 +39,7 @@ export default function CourseList() {
                 </a>
                 <a className="course" href="https://yadi.sk/d/ImSx2qawZ5oolA">
                     <img src={HarryAndBook} alt="" />
-                    <p>Лекции по документоведению</p>
+                    <p>Документоведение</p>
                 </a>
             </div>
         </React.Fragment>
