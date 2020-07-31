@@ -29,6 +29,7 @@ export default function Module({ onModuleChange, num }) {
                     <input
                         type="text"
                         name="name"
+                        value={module.duration}
                         onChange={({ target }) => {
                             changeModule("name", target.value);
                         }}
