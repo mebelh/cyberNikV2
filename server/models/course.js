@@ -2,16 +2,22 @@ const { Schema, model } = require("mongoose");
 
 const CourseSchema = new Schema({
     courseName: String,
-    courseNameColor: String,
-    backgroundColor: String,
+    courseNameColor: {
+        type: String,
+        default: "#000",
+    },
+    backgroundColor: {
+        type: String,
+        default: "#000",
+    },
     linkOnTrialVideo: String,
     shortDescription: String,
     description: String,
     modules: [
         {
             name: String,
-            countLections: Number,
-            items: [{ label: String, duration: Number, link: String }],
+            duration: String,
+            lectures: [{ name: String, duration: String, link: String }],
         },
     ],
 });

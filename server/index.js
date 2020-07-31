@@ -56,7 +56,7 @@ app.use(userMiddleware);
 app.use("/courses", coursesRoute);
 app.use("/auth", authRoute);
 
-const User = require("./models/user");
+// const User = require("./models/user");
 // const bcrypt = require("bcrypt");
 
 const start = async () => {

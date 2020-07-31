@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 
 import Home from "./components/pages/Home";
 import Course from "./components/pages/Course";
-import Course_info from "components/pages/Course_info";
+import CourseInfo from "components/pages/Course_info";
 import SignIn from "./components/pages/auth/SignIn";
 import SignUp from "./components/pages/auth/SignUp";
 import SignOut from "./components/auth/SignOut";
@@ -49,6 +49,22 @@ export default function App() {
         setUser(user);
     };
 
+    // Получение списка курсов
+
+    const [courses, setCourses] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:3001/courses/all", {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                "content-type": "application/json",
+            },
+        }).then(async (e) => {
+            setCourses(await e.json());
+        });
+    }, []);
+
     return (
         <Context.Provider value={{ onUserLogin, setUser, user }}>
             <div className="App">
@@ -56,10 +72,22 @@ export default function App() {
                 <AdminHeader />
                 <BrowserRouter>
                     <Switch>
-                        <Route path={"/"} exact component={Home} />
-                        <Route path={"/course_info"}>
-                            <Course_info videoURL={courseProps.videoURL} shortDesc={courseProps.shortDesc} longDescArr={longDescArr} />
+                        <Route path={"/"} exact>
+                            <Home courses={courses} />
                         </Route>
+
+                        <Route path={"/course_info"} exact>
+                            <CourseInfo
+                                videoURL={courseProps.videoURL}
+                                shortDesc={courseProps.shortDesc}
+                                longDescArr={longDescArr}
+                            />
+                        </Route>
+                        <Route
+                            path={"/course_info/:id"}
+                            component={CourseInfo}
+                        />
+
                         <Route path={"/course"}>
                             <Course
                                 videoURL={courseProps.videoURL}

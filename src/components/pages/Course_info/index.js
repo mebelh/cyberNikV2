@@ -31,7 +31,7 @@ import SideMenu from "components/SideMenu";
 //   )
 // }
 
-export default function Course_info({ videoURL, shortDesc, longDescArr }) {
+export default function CourseInfo({ match }) {
     let moduleList = [
         {
             moduleName: "Module 1",
@@ -106,9 +106,11 @@ export default function Course_info({ videoURL, shortDesc, longDescArr }) {
         },
     ];
 
+    console.log(match);
+
     return (
         <div className="course_info">
-            <div className="">
+            {/* <div className="">
                 {" "}
                 <InviteHeader
                     className="invite_header"
@@ -123,7 +125,7 @@ export default function Course_info({ videoURL, shortDesc, longDescArr }) {
             </div>
             <div className="">
                 <SideMenu className="sidemenu" moduleList={moduleList} />
-            </div>{" "}
+            </div> */}{" "}
         </div>
     );
 }

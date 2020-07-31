@@ -15,17 +15,21 @@ router.post("/add", async (req, res) => {
             courseNameColor,
             backgroundColor,
             linkOnTrialVideo,
+            shortDescription,
+            description,
             modules,
         } = req.body;
-
         const newCourse = new Course({
             courseName,
+            description,
+            shortDescription,
             courseNameColor,
             backgroundColor,
             linkOnTrialVideo,
             modules,
         });
         await newCourse.save();
+        res.redirect("http://localhost:3000/");
     } else {
         res.redirect("/auth/login");
     }
@@ -33,17 +37,17 @@ router.post("/add", async (req, res) => {
 
 router.get("/all", async (req, res) => {
     const courses = await Course.find();
-    res.send(courses);
+    res.send(JSON.stringify(courses));
 });
 
 router.get("/id:link", async (req, res) => {
     const { link } = req.params;
-    const course = await Course.find({ link });
-    if (req.session.user.courses.filter((e) => e.link === link)) {
-        res.send(course.trial);
-    } else {
-        res.send(course);
-    }
+    const course = await Course.find();
+    // if (req.session.user.courses.filter((e) => e.link === link)) {
+    //     res.send(course.trial);
+    // } else {
+    res.send(course);
+    // }
 });
 
 module.exports = router;
