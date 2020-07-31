@@ -1,12 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./style.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
 export default function SideMenu({ moduleList, collapseListID }) {
     const AddLectureInModule = ({ lectures, num }) => {
-        // console.log(num)
-
         return lectures.map((el) => (
             <div
                 id={`collapse_${num}`}
@@ -46,7 +44,6 @@ export default function SideMenu({ moduleList, collapseListID }) {
                             </button>
                         </h2>
                     </div>
-                    {/* {console.log(num)} */}
                     <AddLectureInModule lectures={el.lectures} num={num} />
                 </div>
             </div>

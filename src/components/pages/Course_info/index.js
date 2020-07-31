@@ -1,11 +1,10 @@
-import React from 'react'
-import './style.scss'
-import './adaptive.scss'
-import 'components/InviteHeader'
-import InviteHeader from 'components/InviteHeader'
-import Info_course from 'components/Info_course'
-import SideMenu from 'components/SideMenu'
-
+import React from "react";
+import "./style.scss";
+import "./adaptive.scss";
+import "components/InviteHeader";
+import InviteHeader from "components/InviteHeader";
+import InfoCourse from "components/Info_course";
+import SideMenu from "components/SideMenu";
 
 // function Chapters(props) {
 //   return (
@@ -33,87 +32,98 @@ import SideMenu from 'components/SideMenu'
 // }
 
 export default function Course_info({ videoURL, shortDesc, longDescArr }) {
-
-  let moduleList = [
-    {
-      moduleName: "Module 1",
-
-      lectures: [
+    let moduleList = [
         {
-          name: "О защите",
-          duration: "49 минут",
-          link: "#"
+            moduleName: "Module 1",
+
+            lectures: [
+                {
+                    name: "О защите",
+                    duration: "49 минут",
+                    link: "#",
+                },
+
+                {
+                    name: "О защите",
+                    duration: "59 минут",
+                    link: "#",
+                },
+
+                {
+                    name: "О защите",
+                    duration: "39 минут",
+                    link: "#",
+                },
+            ],
         },
 
         {
-          name: "О защите",
-          duration: "59 минут",
-          link: "#"
+            moduleName: "Module 2",
+
+            lectures: [
+                {
+                    name: "О защите",
+                    duration: "49 минут",
+                    link: "#",
+                },
+
+                {
+                    name: "О щите",
+                    duration: "59 минут",
+                    link: "#",
+                },
+
+                {
+                    name: "О защите",
+                    duration: "39 минут",
+                    link: "#",
+                },
+            ],
         },
 
         {
-          name: "О защите",
-          duration: "39 минут",
-          link: "#"
-        }
-      ]
-    },
+            moduleName: "Module 3",
 
-    {
-      moduleName: "Module 2",
+            lectures: [
+                {
+                    name: "О защите",
+                    duration: "49 минут",
+                    link: "#",
+                },
 
-      lectures: [
-        {
-          name: "О защите",
-          duration: "49 минут",
-          link: "#"
+                {
+                    name: "О защите",
+                    duration: "59 минут",
+                    link: "#",
+                },
+
+                {
+                    name: "О защите",
+                    duration: "39 минут",
+                    link: "#",
+                },
+            ],
         },
+    ];
 
-        {
-          name: "О щите",
-          duration: "59 минут",
-          link: "#"
-        },
-
-        {
-          name: "О защите",
-          duration: "39 минут",
-          link: "#"
-        }
-      ]
-    },
-
-    {
-      moduleName: "Module 3",
-
-      lectures: [
-        {
-          name: "О защите",
-          duration: "49 минут",
-          link: "#"
-        },
-
-        {
-          name: "О защите",
-          duration: "59 минут",
-          link: "#"
-        },
-
-        {
-          name: "О защите",
-          duration: "39 минут",
-          link: "#"
-        }
-      ]
-    }
-  ]
-
-  return (
-    <div className="course_info">
-      <InviteHeader className="invite_header" shortDesc={shortDesc} longDescArr={longDescArr} />
-
-      <SideMenu className="sidemenu" moduleList={moduleList} />
-      <Info_course className="info_course" hortDesc={shortDesc} longDescArr={longDescArr} />
-    </div>
-  )
+    return (
+        <div className="course_info">
+            <div className="">
+                {" "}
+                <InviteHeader
+                    className="invite_header"
+                    shortDesc={shortDesc}
+                    longDescArr={longDescArr}
+                />
+                <InfoCourse
+                    className="info_course"
+                    hortDesc={shortDesc}
+                    longDescArr={longDescArr}
+                />
+            </div>
+            <div className="">
+                <SideMenu className="sidemenu" moduleList={moduleList} />
+            </div>{" "}
+        </div>
+    );
 }

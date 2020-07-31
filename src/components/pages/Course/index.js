@@ -1,6 +1,6 @@
 import React from "react";
 import ReactPlayer from "react-player";
-import Info_course from "components/Info_course";
+import InfoCourse from "components/Info_course";
 
 import SideMenu from "components/SideMenu";
 
@@ -93,15 +93,15 @@ export default function Course({ videoURL, shortDesc, longDescArr }) {
 
     return (
         <div className="Course">
-            <div>
+            <div className="Course__view">
                 <ReactPlayer
-                    className="ReactPlayer"
+                    className="Course__view-ReactPlayer"
                     url={videoURL}
                     width="100%"
                     height="400px"
                     controls={true}
                 />
-                <Info_course
+                <InfoCourse
                     className="Info_course"
                     shortDesc={shortDesc}
                     longDescArr={longDescArr}

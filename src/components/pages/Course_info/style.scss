@@ -1,24 +1,9 @@
 .course_info {
   margin-top: 1em;
-  // .invite_header{
-  //   grid-area: inviteHeader,
-  // } 
-
-  // .info_course{
-  //   grid-area: infoCourse
-  // }
-
-  // .sidemenu {
-  //   grid-area: sidemenu;
-  // }
-
 
   display: grid;
   grid-template-columns: 1fr 400px;
 
-  &>:first-child {
-    height: 500px;
-  }
 
   // grid-template-rows: 1fr;
   // grid-template-rows: auto;

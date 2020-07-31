@@ -107,7 +107,7 @@ export default function AddCourse() {
             <div className="addCourse__right">
                 <AddModules onInfAdd={onInfAdd} />
                 <Button
-                    className="addCourse__btn"
+                    className="addCourse__right__btn"
                     label="Добавить курс"
                     bgc="#16ba58"
                     type="submit"
