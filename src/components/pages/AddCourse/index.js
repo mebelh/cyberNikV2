@@ -39,6 +39,7 @@ export default function AddCourse() {
                     <input
                         type="text"
                         name="courseName"
+                        required
                         onChange={({ target }) => {
                             onInfAdd("courseName", target.value);
                         }}
@@ -48,6 +49,7 @@ export default function AddCourse() {
                     <span>Цвет имени курса:</span>
                     <input
                         type="color"
+                        required
                         name="courseNameColor"
                         onChange={({ target }) => {
                             onInfAdd("courseNameColor", target.value);
@@ -58,6 +60,7 @@ export default function AddCourse() {
                     <span>Цвет фона:</span>
                     <input
                         type="color"
+                        required
                         name="backgroundColor"
                         onChange={({ target }) => {
                             onInfAdd("backgroundColor", target.value);
@@ -68,6 +71,7 @@ export default function AddCourse() {
                     <span>Ссылка на триал видео:</span>
                     <input
                         type="text"
+                        required
                         name="linkOnTrialVideo"
                         onChange={({ target }) => {
                             onInfAdd("linkOnTrialVideo", target.value);
@@ -79,6 +83,7 @@ export default function AddCourse() {
                         placeholder="Короткое описание курса"
                         rows="8"
                         cols="80"
+                        required
                         name="shortDescription"
                         onChange={({ target }) => {
                             onInfAdd("shortDescription", target.value);
@@ -89,6 +94,7 @@ export default function AddCourse() {
                     <textarea
                         placeholder="Описание каждого модуля"
                         rows="12"
+                        required
                         cols="80"
                         name="description"
                         onChange={({ target }) => {
