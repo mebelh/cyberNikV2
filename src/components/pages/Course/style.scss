@@ -1,16 +1,23 @@
 .ReactPlayr {
   grid-area: 'ReactPlayer';
 }
+
 .Info_course {
   grid-area: 'Info_course'
 }
+
 .SideMenu {
   grid-area: "SideMenu_course"
 }
 
 .Course {
   display: grid;
-  grid-template-columns: auto 400px;
+  grid-template-columns: auto 200px;
+
+  &>:first-child {
+    height: 300px;
+  }
+
   // grid-template-areas: 
   // "SideMenu_course SideMenu_course" 
   // "Info_course SideMenu_course";
