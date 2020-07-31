@@ -17,6 +17,7 @@ export default function Lecture({ onLacturesChange, num }) {
                 <input
                     value={lecture.name}
                     type="text"
+                    required
                     onChange={({ target }) => {
                         onLactureChange("name", target.value);
                     }}
@@ -27,6 +28,7 @@ export default function Lecture({ onLacturesChange, num }) {
                 <input
                     value={lecture.duration}
                     type="text"
+                    required
                     onChange={({ target }) => {
                         onLactureChange("duration", target.value);
                     }}
@@ -37,6 +39,7 @@ export default function Lecture({ onLacturesChange, num }) {
                 <input
                     value={lecture.link}
                     type="text"
+                    required
                     onChange={({ target }) => {
                         onLactureChange("link", target.value);
                     }}
