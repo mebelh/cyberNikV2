@@ -1,5 +1,6 @@
 import React from 'react'
 import './style.scss'
+import './adaptive.scss'
 import 'components/InviteHeader'
 import InviteHeader from 'components/InviteHeader'
 import Info_course from 'components/Info_course'
@@ -111,11 +112,8 @@ export default function Course_info({ videoURL, shortDesc, longDescArr }) {
     <div className="course_info">
       <InviteHeader className="invite_header" shortDesc={shortDesc} longDescArr={longDescArr} />
 
-      <Info_course className="info_course" hortDesc={shortDesc} longDescArr={longDescArr} />
       <SideMenu className="sidemenu" moduleList={moduleList} />
-
-
-      {/* <CourseMaterials modules={modules} /> */}
+      <Info_course className="info_course" hortDesc={shortDesc} longDescArr={longDescArr} />
     </div>
   )
 }
