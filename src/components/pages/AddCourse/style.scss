@@ -1,4 +1,14 @@
 .addCourse {
   display: grid;
   grid-auto-flow: column;
+
+  &__right {
+    margin-left: 1em;
+    align-items: center;
+    justify-content: center;
+
+    &__btn {
+      margin-top: 1em;
+    }
+  }
 }
