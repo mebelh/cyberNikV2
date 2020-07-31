@@ -1,10 +1,8 @@
 import React, { useState } from "react";
 import "./style.scss";
 import ModuleGroupe from "./ModuleGroupe";
-export default function AddModules() {
+export default function AddModules({ onInfAdd }) {
     const [modulesNumber, setModulesNumber] = useState(1);
-
-    // const arr = Module(modulesNumber)
 
     return (
         <div className="AddModules">
@@ -17,7 +15,7 @@ export default function AddModules() {
                 />
             </div>
 
-            <ModuleGroupe num={modulesNumber} />
+            <ModuleGroupe num={modulesNumber} onInfAdd={onInfAdd} />
         </div>
     );
 }

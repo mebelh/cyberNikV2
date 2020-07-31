@@ -1,28 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 import "./style.scss";
-import AddModules from "./AddModules"
-import Button from "components/Button"
+import AddModules from "./AddModules";
+import Button from "components/Button";
 export default function AddCourse() {
+    const [course, setCourse] = useState({});
+
+    const onInfAdd = (key, label) => {
+        setCourse({ ...course, [key]: label });
+        console.log(course);
+    };
+
     return (
-        <form className="addCourse" onKeyPress={(e) => { e.key === 'Enter' && e.preventDefault(); }}
-            action="http://localhost:3001/course/add" method="POST">
+        <form
+            className="addCourse"
+            onKeyPress={(e) => {
+                e.key === "Enter" && e.preventDefault();
+            }}
+        >
             <div className="addCourse__left">
                 <h2>Добавить курс:</h2>
                 <label>
                     <span>Имя курса:</span>
-                    <input type="text" name="courseName" />
+                    <input
+                        type="text"
+                        name="courseName"
+                        onChange={({ target }) => {
+                            onInfAdd("courseName", target.value);
+                        }}
+                    />
                 </label>
                 <div>
                     <span>Цвет имени курса:</span>
-                    <input type="color" name="courseNameColor" />
+                    <input
+                        type="color"
+                        name="courseNameColor"
+                        onChange={({ target }) => {
+                            onInfAdd("courseNameColor", target.value);
+                        }}
+                    />
                 </div>
                 <div>
                     <span>Цвет фона:</span>
-                    <input type="color" name="backgroundColor" />
+                    <input
+                        type="color"
+                        name="backgroundColor"
+                        onChange={({ target }) => {
+                            onInfAdd("backgroundColor", target.value);
+                        }}
+                    />
                 </div>
                 <div>
                     <span>Ссылка на триал видео:</span>
-                    <input type="text" name="linkOnTrialVideo" />
+                    <input
+                        type="text"
+                        name="linkOnTrialVideo"
+                        onChange={({ target }) => {
+                            onInfAdd("linkOnTrialVideo", target.value);
+                        }}
+                    />
                 </div>
                 <div>
                     <textarea
@@ -30,6 +65,9 @@ export default function AddCourse() {
                         rows="8"
                         cols="80"
                         name="shortDescription"
+                        onChange={({ target }) => {
+                            onInfAdd("shortDescription", target.value);
+                        }}
                     />
                 </div>
                 <div>
@@ -38,17 +76,21 @@ export default function AddCourse() {
                         rows="12"
                         cols="80"
                         name="description"
+                        onChange={({ target }) => {
+                            onInfAdd("description", target.value);
+                        }}
                     />
                 </div>
             </div>
 
             <div className="addCourse__right">
-                {/* <h3>Добавить модули</h3> */}
-                <AddModules />
-                <Button className="addCourse__btn" label="Добавить курс" bgc="#16ba58" />
-
+                <AddModules onInfAdd={onInfAdd} />
+                <Button
+                    className="addCourse__btn"
+                    label="Добавить курс"
+                    bgc="#16ba58"
+                />
             </div>
-
         </form>
     );
 }
