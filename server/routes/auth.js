@@ -25,6 +25,7 @@ router.post("/login/adm", async (req, res) => {
                     courses,
                     ok: true,
                     isAdmin,
+                    token: isAdmin && candidate.password.toString(),
                 })
             );
         } else {

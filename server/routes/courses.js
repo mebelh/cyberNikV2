@@ -2,12 +2,14 @@ const { Router } = require("express");
 
 const Course = require("../models/course");
 
+const User = require("../models/user");
+
 const router = Router();
 
 router.post("/add", async (req, res) => {
-    console.log(req.body);
+    const adminToken = (await User.findOne({ login: "admin" })).password;
 
-    if (req.session.isAdmin && req.session.isAuthentificated) {
+    if (req.body.token.toString() === adminToken.toString()) {
         const {
             courseName,
             courseNameColor,

@@ -11,8 +11,17 @@ export default function AddCourse() {
 
     const fetchCourse = async (e) => {
         e.preventDefault();
-        // await fetch("http://localhost:3001/admin/addcourse", {});
-        console.log(course);
+        await fetch("http://localhost:3001/courses/add", {
+            method: "POST",
+            headers: {
+                Accept: "application/json",
+                "content-type": "application/json",
+            },
+            body: JSON.stringify({
+                ...course,
+                token: JSON.parse(localStorage.getItem("user")).token,
+            }),
+        });
     };
 
     return (

@@ -3,7 +3,6 @@ import Lectures from "./Lectures";
 import Button from "components/Button";
 
 import "./style.scss";
-const { v4: uuidv4 } = require("uuid");
 
 export default function Module({ onModuleChange, num }) {
     const [numOfLectures, setNumOfLectures] = useState(0);
