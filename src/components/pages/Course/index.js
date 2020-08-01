@@ -30,7 +30,7 @@ export default function Course({ match }) {
     }, []);
 
     const onVideoChange = (link) => {
-        setLecture(link);
+        link && setLecture(link);
     };
 
     return (

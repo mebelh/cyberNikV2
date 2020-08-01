@@ -64,7 +64,7 @@ router.get("/:id/:userLogin", async (req, res) => {
 
     const course = await Course.find({ link: id });
 
-    const user = await User.findOne({ login: userLogin });
+    const user = (await User.findOne({ login: userLogin })) || { courses: [] };
 
     if (course.length) {
         const isPremium = ~user.courses.join("").indexOf(id);
