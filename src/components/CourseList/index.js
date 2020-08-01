@@ -21,30 +21,33 @@ export default function CourseList() {
     }, []);
 
     return (
-        <React.Fragment>
+        <>
             <div className="course-list">
                 {courses.map((e) => {
                     console.log(e);
                     return (
-                        <Link className="course" to={`/course/${e.link}`}>
-                            {/* <img src={HarryAndBook} alt="" /> */}
-                            <div
-                                className="course__img"
-                                style={{
-                                    backgroundImage: `url(${e.backgroundImageLink})`,
-                                }}
-                            ></div>
-                            <p
-                                style={{
-                                    color: e.courseNameColor,
-                                }}
-                            >
-                                {e.courseName}
-                            </p>
+                        <Link to={`/course/${e.link}`}>
+                            <div className="course">
+                                <div
+                                    className="course__img"
+                                    style={{
+                                        backgroundImage: `url(${
+                                            e.backgroundImageLink || ""
+                                        })`,
+                                    }}
+                                ></div>
+                                <p
+                                    style={{
+                                        color: e.courseNameColor,
+                                    }}
+                                >
+                                    {e.courseName}
+                                </p>
+                            </div>
                         </Link>
                     );
                 })}
             </div>
-        </React.Fragment>
+        </>
     );
 }
