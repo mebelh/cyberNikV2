@@ -10,7 +10,6 @@ export default function AddCourse() {
     };
 
     const fetchCourse = async (e) => {
-        e.preventDefault();
         await fetch("http://localhost:3001/courses/add", {
             method: "POST",
             headers: {
