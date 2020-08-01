@@ -3,15 +3,20 @@ import "./style.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
-export default function SideMenu({ modules }) {
+export default function SideMenu({ modules, onVideoChange }) {
     const AddLectureInModule = ({ lectures }) => {
         return lectures.map((el) => (
             <div className="list-group">
-                <li className="list-group-item">
-                    <a className="lecture" href={el.link}>
+                <li
+                    className="list-group-item"
+                    onClick={() => {
+                        onVideoChange(el.link);
+                    }}
+                >
+                    <div className="lecture">
                         <div className="lecture__name">{el.name}</div>
                         <div className="lecture__duration">{el.duration}</div>
-                    </a>
+                    </div>
                 </li>
             </div>
         ));

@@ -11,9 +11,9 @@ export default function Course({ match }) {
 
     const [course, setCourse] = useState({});
 
-    const [lecture, setLecture] = useState({});
-
     const user = JSON.parse(localStorage.getItem("user"));
+
+    const [lecture, setLecture] = useState("");
 
     useEffect(() => {
         fetch(`http://localhost:3001/courses/${courseId}/${user.login}`, {
@@ -23,16 +23,22 @@ export default function Course({ match }) {
                 "content-type": "application/json",
             },
         }).then(async (e) => {
-            setCourse(await e.json());
+            const course = await e.json();
+            setCourse(course);
+            setLecture(`${course.linkOnTrialVideo}`);
         });
     }, []);
+
+    const onVideoChange = (link) => {
+        setLecture(link);
+    };
 
     return (
         <div className="Course">
             <div className="Course__view">
                 <ReactPlayer
                     className="Course__view-ReactPlayer"
-                    url={course.linkOnTrialVideo}
+                    url={lecture}
                     width="100%"
                     height="400px"
                     controls={true}
@@ -43,7 +49,11 @@ export default function Course({ match }) {
                     description={course.description}
                 />
             </div>
-            <SideMenu className="SideMenu" modules={course.modules} />
+            <SideMenu
+                className="SideMenu"
+                modules={course.modules}
+                onVideoChange={onVideoChange}
+            />
         </div>
     );
 }
