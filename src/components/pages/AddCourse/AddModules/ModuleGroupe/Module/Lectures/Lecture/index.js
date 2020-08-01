@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./style.scss";
 
 export default function Lecture({ onLacturesChange, num }) {
@@ -6,9 +6,11 @@ export default function Lecture({ onLacturesChange, num }) {
 
     const onLactureChange = (key, label) => {
         setLecture({ ...lecture, [key]: label });
-        onLacturesChange(num, lecture);
-        console.log(lecture);
     };
+
+    useEffect(() => {
+        onLacturesChange(num, lecture);
+    }, [lecture]);
 
     return (
         <div key={num} className="Lecture">

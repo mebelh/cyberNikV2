@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Lecture from "./Lecture";
 
 export default function Lectures({ n, changeModule }) {
@@ -7,11 +7,16 @@ export default function Lectures({ n, changeModule }) {
     const [lectures, setLectures] = useState([]);
 
     const onLacturesChange = (id, lecture) => {
-        const newLectures = [...lectures];
-        newLectures[id] = lecture;
-        setLectures(newLectures);
-        changeModule("lectures", lectures);
+        setLectures([
+            ...lectures.slice(0, id),
+            lecture,
+            ...lectures.slice(id + 1),
+        ]);
     };
+
+    useEffect(() => {
+        changeModule("lectures", lectures);
+    }, [lectures]);
 
     for (let i = 0; i < n; i++) {
         arr.push(

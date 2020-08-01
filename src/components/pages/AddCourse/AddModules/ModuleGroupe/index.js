@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Module from "./Module";
 
 export default function ModuleGroupe({ num = 1, onInfAdd }) {
@@ -7,11 +7,12 @@ export default function ModuleGroupe({ num = 1, onInfAdd }) {
     const [modules, setModules] = useState([]);
 
     const onModuleChange = (module, id) => {
-        const newModules = [...modules];
-        newModules[id] = module;
-        setModules(newModules);
-        onInfAdd("modules", modules);
+        setModules([...modules.slice(0, id), module, ...modules.slice(id + 1)]);
     };
+
+    useEffect(() => {
+        onInfAdd("modules", modules);
+    }, [modules]);
 
     num = +num ? num : 1;
 

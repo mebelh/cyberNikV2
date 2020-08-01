@@ -1,59 +1,57 @@
-import React, { useCallback, useEffect } from "react";
+import React from "react";
 import "./style.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
 export default function SideMenu({ modules }) {
     const AddLectureInModule = ({ lectures }) => {
-        console.log(lectures);
-
-        return lectures.map((el, index) => (
-            <div
-                id={`collapse_${index}`}
-                className="collapse show"
-                aria-labelledby="headingOne"
-                data-parent="#accordionExample"
-            >
-                <ul class="list-group">
-                    <li class="list-group-item">
-                        <a className="lecture" href={el.link}>
-                            <div className="lecture__name">{el.name}</div>
-                            <div className="lecture__duration">
-                                {el.duration}
-                            </div>
-                        </a>
-                    </li>
-                </ul>
+        return lectures.map((el) => (
+            <div className="list-group">
+                <li className="list-group-item">
+                    <a className="lecture" href={el.link}>
+                        <div className="lecture__name">{el.name}</div>
+                        <div className="lecture__duration">{el.duration}</div>
+                    </a>
+                </li>
             </div>
         ));
     };
 
     const AddModulesInSideMenu = ({ modules = [] }) => {
-        return modules.map((el, index) => (
-            <div className="accordion" id="accordionExample">
-                <div className="card">
-                    <div className="card-header" id="headingOne">
-                        <div className="mb-0">
-                            <button
-                                className="btn btn-link"
-                                type="button"
-                                data-toggle="collapse"
-                                data-target={`#collapse_${index}`}
-                                aria-expanded="true"
-                                aria-controls={"collapse_" + { index }}
-                            >
-                                {el.name}
-                            </button>
-                            <span>
-                                Количество лекций:{" "}
-                                <strong>{el.lectures.length}</strong>
-                            </span>
+        return (
+            <div class="accordion" id="accordionExample">
+                {modules.map((e, index) => (
+                    <div className="card">
+                        <div className="card-header" id={`heading${index}`}>
+                            <h2 className="mb-0">
+                                <button
+                                    className="btn btn-link btn-block text-left"
+                                    type="button"
+                                    data-toggle="collapse"
+                                    data-target={`#collapse${index}`}
+                                    aria-expanded="true"
+                                    aria-controls={`#collapse${index}`}
+                                >
+                                    {e.name}
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div
+                            id={`collapse${index}`}
+                            className="collapse show"
+                            aria-labelledby={`headin${index}`}
+                            data-parent="#accordionExample"
+                        >
+                            <AddLectureInModule
+                                lectures={e.lectures}
+                                key={index}
+                            />
                         </div>
                     </div>
-                    <AddLectureInModule lectures={el.lectures} num={index} />
-                </div>
+                ))}
             </div>
-        ));
+        );
     };
 
     return (

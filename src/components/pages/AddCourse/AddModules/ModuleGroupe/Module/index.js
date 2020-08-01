@@ -11,8 +11,11 @@ export default function Module({ onModuleChange, num }) {
 
     const changeModule = (key, label) => {
         setModule({ ...module, [key]: label });
-        onModuleChange(module, num);
     };
+
+    useEffect(() => {
+        onModuleChange(module, num);
+    }, [module]);
 
     useEffect(() => {
         if (numOfLectures <= 1) {

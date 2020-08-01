@@ -66,7 +66,8 @@ router.get("/:link", async (req, res) => {
     // if (req.session.user.courses.filter((e) => e.link === link)) {
     //     res.send(course.trial);
     // } else {
-    res.send(JSON.stringify(...course));
+    res.send(course.length ? JSON.stringify(...course) : JSON.stringify({}));
+
     // }
 });
 
