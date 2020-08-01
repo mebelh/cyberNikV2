@@ -40,12 +40,49 @@ export default function AddCourse() {
                         type="text"
                         name="courseName"
                         required
+                        placeholder="Введите имя курса..."
                         onChange={({ target }) => {
                             onInfAdd("courseName", target.value);
                         }}
                     />
                 </label>
-                <div>
+                <label>
+                    <span>Id курса:</span>
+                    <input
+                        type="text"
+                        required
+                        placeholder="Введите id курса..."
+                        name="id"
+                        onChange={({ target }) => {
+                            onInfAdd("link", target.value);
+                        }}
+                    />
+                </label>
+                <label>
+                    <span>Ссылка на триал видео:</span>
+                    <input
+                        type="text"
+                        required
+                        placeholder="Введите ссылку..."
+                        name="linkOnTrialVideo"
+                        onChange={({ target }) => {
+                            onInfAdd("linkOnTrialVideo", target.value);
+                        }}
+                    />
+                </label>
+                <label>
+                    <span>Ссылка на фоновую картинку:</span>
+                    <input
+                        type="text"
+                        required
+                        placeholder="Введите ссылку..."
+                        name="backgroundImageLink"
+                        onChange={({ target }) => {
+                            onInfAdd("backgroundImageLink", target.value);
+                        }}
+                    />
+                </label>
+                <label>
                     <span>Цвет имени курса:</span>
                     <input
                         type="color"
@@ -55,8 +92,8 @@ export default function AddCourse() {
                             onInfAdd("courseNameColor", target.value);
                         }}
                     />
-                </div>
-                <div>
+                </label>
+                <label>
                     <span>Цвет фона:</span>
                     <input
                         type="color"
@@ -66,18 +103,8 @@ export default function AddCourse() {
                             onInfAdd("backgroundColor", target.value);
                         }}
                     />
-                </div>
-                <div>
-                    <span>Ссылка на триал видео:</span>
-                    <input
-                        type="text"
-                        required
-                        name="linkOnTrialVideo"
-                        onChange={({ target }) => {
-                            onInfAdd("linkOnTrialVideo", target.value);
-                        }}
-                    />
-                </div>
+                </label>
+
                 <div>
                     <textarea
                         placeholder="Короткое описание курса"

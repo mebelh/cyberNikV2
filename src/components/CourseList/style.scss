@@ -1,40 +1,60 @@
 .course {
 
-  &-list {
-    grid-area: courses;
-    display: grid;
-    grid-gap: 20px;
-    grid-template-columns: 1fr 1fr;
-    // margin-bottom: 300px;
-  }
+  background-color: #000;
+  box-shadow: 0 0 10px #00000077;
+  position: relative;
 
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-
-  img{
-    width: 100%;
+  * {
     transition: all ease 0.3s;
   }
-  
+
   p {
     position: absolute;
-    color: white;
+    top: 50%;
+    left: 50%;
+    font-family: harry;
+    font-size: 4em;
+    margin-top: -.5em;
+    margin-left: -.5em;
+  }
+
+  &__img {
+    height: 20em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    background-color: #000000;
+    background-position: center;
+    background-size: 100%;
+
+    transition: all ease 0.3s;
+
+    opacity: .6;
+  }
+
+  &-list {
+    display: grid;
+    margin: 1em 0 1em;
+    grid-gap: 1em;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &__img p {
     font-family: harry;
     font-size: 60px;
-    transition: all ease 0.3s;
   }
 
-  &:hover img {
+  &__img:hover {
 
-    background-color: rgba(0, 0, 0, 0.966);
-    webkit-filter: blur(4px); /* Chrome, Safari, Opera */
-    filter: blur(4px) grayscale(20%);
+    filter: blur(3px) grayscale(20%);
+
   }
+
   &:hover p {
-
     transform: scale(1.2);
+    text-decoration: none;
   }
 }

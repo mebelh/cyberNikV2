@@ -2,6 +2,8 @@ const { Schema, model } = require("mongoose");
 
 const CourseSchema = new Schema({
     courseName: String,
+    link: String,
+    backgroundImageLink: String,
     courseNameColor: {
         type: String,
         default: "#000",

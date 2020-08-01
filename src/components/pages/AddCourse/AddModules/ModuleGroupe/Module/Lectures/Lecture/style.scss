@@ -3,9 +3,16 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 5px 10px;
+  height: 4em;
+  border-left: 1px solid #00000021;
+  border-right: 1px solid #00000021;
+  border-bottom: 1px solid #00000021;
 
   &>div {
-    margin: 0 1em 0 1em;
+    margin: 0 2em 0 2em;
+
+    span {
+      margin-right: .5em;
+    }
   }
 }

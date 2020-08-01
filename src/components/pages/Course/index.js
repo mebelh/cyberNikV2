@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import ReactPlayer from "react-player";
 import InfoCourse from "components/Info_course";
 
@@ -6,112 +6,44 @@ import SideMenu from "components/SideMenu";
 
 import "./style.scss";
 
-export default function Course({ videoURL, shortDesc, longDescArr }) {
-    let collapseListID = [
-        "#collapseOne",
-        "#collapseTwo",
-        "#collapseThree",
-        "#collapseForu",
-        "#collapseFive",
-        "#collapseSix",
-        "#collapseSeven",
-    ];
+export default function Course({ match }) {
+    const courseId = match.params.id;
 
-    let moduleList = [
-        {
-            moduleName: "Module 1",
+    const [course, setCourse] = useState({});
 
-            lectures: [
-                {
-                    name: "О защите",
-                    duration: "49 минут",
-                    link: "https://www.youtube.com/watch?v=fuOZZuvKNkI",
-                },
+    const [lecture, setLecture] = useState({});
 
-                {
-                    name: "О защите",
-                    duration: "59 минут",
-                    link: "https://www.youtube.com/watch?v=fuOZZuvKNkI",
-                },
+    useEffect(() => {
+        fetch(`http://localhost:3001/courses/${courseId}`, {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                "content-type": "application/json",
+            },
+        }).then(async (e) => {
+            setCourse(await e.json());
+        });
+    }, []);
 
-                {
-                    name: "О защите",
-                    duration: "39 минут",
-                    link: "https://www.youtube.com/watch?v=fuOZZuvKNkI",
-                },
-            ],
-        },
-
-        {
-            moduleName: "Module 2",
-
-            lectures: [
-                {
-                    name: "О защите",
-                    duration: "49 минут",
-                    link: "https://www.youtube.com/watch?v=fuOZZuvKNkI",
-                },
-
-                {
-                    name: "О щите",
-                    duration: "59 минут",
-                    link: "https://www.youtube.com/watch?v=fuOZZuvKNkI",
-                },
-
-                {
-                    name: "О защите",
-                    duration: "39 минут",
-                    link: "https://www.youtube.com/watch?v=fuOZZuvKNkI",
-                },
-            ],
-        },
-
-        {
-            moduleName: "Module 3",
-
-            lectures: [
-                {
-                    name: "О защите",
-                    duration: "49 минут",
-                    link: "https://www.youtube.com/watch?v=fuOZZuvKNkI",
-                },
-
-                {
-                    name: "О защите",
-                    duration: "59 минут",
-                    link: "https://www.youtube.com/watch?v=fuOZZuvKNkI",
-                },
-
-                {
-                    name: "О защите",
-                    duration: "39 минут",
-                    link: "https://www.youtube.com/watch?v=fuOZZuvKNkI",
-                },
-            ],
-        },
-    ];
+    console.log(course);
 
     return (
         <div className="Course">
             <div className="Course__view">
                 <ReactPlayer
                     className="Course__view-ReactPlayer"
-                    url={videoURL}
+                    url={course.linkOnTrialVideo}
                     width="100%"
                     height="400px"
                     controls={true}
                 />
                 <InfoCourse
                     className="Info_course"
-                    shortDesc={shortDesc}
-                    longDescArr={longDescArr}
+                    shortDescription={course.shortDescription}
+                    description={course.description}
                 />
             </div>
-            <SideMenu
-                className="SideMenu"
-                moduleList={moduleList}
-                collapseListID={collapseListID}
-            />
+            {/* <SideMenu className="SideMenu" modules={course.modules} /> */}
         </div>
     );
 }

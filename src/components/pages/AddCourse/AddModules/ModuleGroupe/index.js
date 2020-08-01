@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Module from "./Module";
 
-export default function ModuleGroupe({ num, onInfAdd }) {
+export default function ModuleGroupe({ num = 1, onInfAdd }) {
     const arr = [];
 
     const [modules, setModules] = useState([]);
@@ -12,6 +12,8 @@ export default function ModuleGroupe({ num, onInfAdd }) {
         setModules(newModules);
         onInfAdd("modules", modules);
     };
+
+    num = +num ? num : 1;
 
     for (let i = 0; i < num; i++) {
         arr.push(<Module onModuleChange={onModuleChange} num={i} key={i} />);

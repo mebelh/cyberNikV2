@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useCallback } from "react";
 import "./style.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
-export default function SideMenu({ moduleList, collapseListID }) {
-    const AddLectureInModule = ({ lectures, num }) => {
-        return lectures.map((el) => (
+export default function SideMenu({ modules }) {
+    const AddLectureInModule = useCallback(({ lectures }) => {
+        return lectures.map((el, index) => (
             <div
-                id={`collapse_${num}`}
+                id={`collapse_${index}`}
                 className="collapse show"
                 aria-labelledby="headingOne"
                 data-parent="#accordionExample"
@@ -24,12 +24,13 @@ export default function SideMenu({ moduleList, collapseListID }) {
                 </ul>
             </div>
         ));
-    };
+    }, []);
 
-    const AddModulesInSideMenu = ({ moduleList }) => {
-        return moduleList.map((el, num) => (
+    const AddModulesInSideMenu = ({ modules }) => {
+        console.log(modules);
+        return modules.map((e) => (
             <div className="accordion" id="accordionExample">
-                <div className="card">
+                {/* <div className="card">
                     <div className="card-header" id="headingOne">
                         <h2 className="mb-0">
                             <button
@@ -45,14 +46,14 @@ export default function SideMenu({ moduleList, collapseListID }) {
                         </h2>
                     </div>
                     <AddLectureInModule lectures={el.lectures} num={num} />
-                </div>
+                </div> */}
             </div>
         ));
     };
 
     return (
         <div className="sideMenu">
-            <AddModulesInSideMenu moduleList={moduleList} />
+            <AddModulesInSideMenu modules={modules} />
         </div>
     );
 }

@@ -12,8 +12,10 @@ router.post("/add", async (req, res) => {
     if (req.body.token.toString() === adminToken.toString()) {
         const {
             courseName,
+            link,
             courseNameColor,
             backgroundColor,
+            backgroundImageLink,
             linkOnTrialVideo,
             shortDescription,
             description,
@@ -21,32 +23,50 @@ router.post("/add", async (req, res) => {
         } = req.body;
         const newCourse = new Course({
             courseName,
-            description,
-            shortDescription,
+            link,
             courseNameColor,
             backgroundColor,
+            backgroundImageLink,
             linkOnTrialVideo,
+            shortDescription,
+            description,
             modules,
         });
         await newCourse.save();
-        res.redirect("http://localhost:3000/");
     } else {
-        res.redirect("/auth/login");
+        res.redirect("http://localhost:3000/auth/login");
     }
 });
 
 router.get("/all", async (req, res) => {
     const courses = await Course.find();
-    res.send(JSON.stringify(courses));
+
+    res.send(
+        JSON.stringify(
+            courses.map(
+                ({
+                    courseName,
+                    link,
+                    backgroundImageLink,
+                    courseNameColor,
+                }) => ({
+                    courseName,
+                    link,
+                    backgroundImageLink,
+                    courseNameColor,
+                })
+            )
+        )
+    );
 });
 
-router.get("/id:link", async (req, res) => {
+router.get("/:link", async (req, res) => {
     const { link } = req.params;
-    const course = await Course.find();
+    const course = await Course.find({ link });
     // if (req.session.user.courses.filter((e) => e.link === link)) {
     //     res.send(course.trial);
     // } else {
-    res.send(course);
+    res.send(JSON.stringify(...course));
     // }
 });
 

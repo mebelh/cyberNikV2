@@ -4,13 +4,12 @@ import Advantages from "../../Advantages";
 import CourseList from "../../CourseList";
 import "./adaptive.scss";
 
-export default function Home({ courses }) {
-    console.log(courses);
+export default function Home() {
     return (
         <div className="Home">
             <Poster />
             <Advantages />
-            <CourseList courses={courses} />
+            <CourseList />
         </div>
     );
 }

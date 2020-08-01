@@ -1,55 +1,49 @@
-import React, { useState } from "react";
-import HarryAndBook from "./../../img/HarryAndBook.jpg";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import "./style.scss";
 
-export default function CourseList({ courses }) {
+export default function CourseList() {
+    // Получение списка курсов
+
+    const [courses, setCourses] = useState([]);
+
+    useEffect(() => {
+        fetch("http://localhost:3001/courses/all", {
+            method: "GET",
+            headers: {
+                Accept: "application/json",
+                "content-type": "application/json",
+            },
+        }).then(async (e) => {
+            setCourses(await e.json());
+        });
+    }, []);
+
     return (
         <React.Fragment>
             <div className="course-list">
-                {/* <Link className="course" to="/course_info">
-                    <img src={HarryAndBook} alt="" />
-                    <p>Лекции по ЗКТ</p>
-                </Link> */}
-
                 {courses.map((e) => {
+                    console.log(e);
                     return (
-                        <Link className="course" to="/course_info">
-                            <img src={HarryAndBook} alt="" />
-                            <p>{e.courseName}</p>
+                        <Link className="course" to={`/course/${e.link}`}>
+                            {/* <img src={HarryAndBook} alt="" /> */}
+                            <div
+                                className="course__img"
+                                style={{
+                                    backgroundImage: `url(${e.backgroundImageLink})`,
+                                }}
+                            ></div>
+                            <p
+                                style={{
+                                    color: e.courseNameColor,
+                                }}
+                            >
+                                {e.courseName}
+                            </p>
                         </Link>
                     );
                 })}
-                {/* 
-                <a className="course" href="https://yadi.sk/d/xknb0ys0pAQHyQ">
-                    <img src={HarryAndBook} alt="" />
-                    <p>Лекции по ОИБ</p>
-                </a>
-                <a className="course" href="https://yadi.sk/d/Rqh6EaSs2VDOvA">
-                    <img src={HarryAndBook} alt="" />
-                    <p>Лекции по ЗПД</p>
-                </a>
-                <a className="course" href="https://yadi.sk/d/AhzI43nojTpmvQ">
-                    <img src={HarryAndBook} alt="" />
-                    <p>Лекции по ЗиОКД</p>
-                </a>
-                <a className="course" href="https://yadi.sk/d/R6bVFHGSnXSNpQ">
-                    <img src={HarryAndBook} alt="" />
-                    <p>Лекции по ИТЗИ</p>
-                </a>
-                <a className="course" href="https://yadi.sk/d/eFr3nbfEl3MHqw">
-                    <img src={HarryAndBook} alt="" />
-                    <p>Лекции по ОПОИБ</p>
-                </a>
-                <a className="course" href="https://yadi.sk/d/EhblvdZaRupvoA">
-                    <img src={HarryAndBook} alt="" />
-                    <p>Лекции по СЗИвВЗС</p>
-                </a>
-                <a className="course" href="https://yadi.sk/d/ImSx2qawZ5oolA">
-                    <img src={HarryAndBook} alt="" />
-                    <p>Документоведение</p>
-                </a> */}
             </div>
         </React.Fragment>
     );

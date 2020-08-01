@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 
 import Home from "./components/pages/Home";
 import Course from "./components/pages/Course";
-import CourseInfo from "components/pages/Course_info";
+// import CourseInfo from "components/pages/Course_info";
 import SignIn from "./components/pages/auth/SignIn";
 import SignUp from "./components/pages/auth/SignUp";
 import SignOut from "./components/auth/SignOut";
@@ -21,19 +21,6 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import "./App.scss";
 
 export default function App() {
-    let courseProps = {
-        videoURL: "https://www.youtube.com/watch?v=zLcf3sslAZ8",
-        shortDesc:
-            "Основы верстки с нуля. HTML, CSS, Flexbox. Верстка проекта.",
-        longDesc: `1. В первой части мы узнаем кто такой frontend разработчик, познакомимся инструментами и изучим синтаксис HTML
-        2. Во второй части мы перейдем к знакомству с CSS, узнаем о приоритетах стилей, посмотрим на панель разработчика, узнаем базовые свойства, поработаем с позиционированием и изучим Flexbox.
-        3. В третьей части мы сверстаем небольшую страницу где применим все то что прошли ран
-        4. Верстка проекта по макету.
-        5. В четвертой части курса мы познакомимся с основами CSS Grid.`,
-    };
-
-    let longDescArr = courseProps.longDesc.split("\n");
-
     const [user, setUser] = useState({});
 
     useEffect(() => {
@@ -49,22 +36,6 @@ export default function App() {
         setUser(user);
     };
 
-    // Получение списка курсов
-
-    const [courses, setCourses] = useState([]);
-
-    useEffect(() => {
-        fetch("http://localhost:3001/courses/all", {
-            method: "GET",
-            headers: {
-                Accept: "application/json",
-                "content-type": "application/json",
-            },
-        }).then(async (e) => {
-            setCourses(await e.json());
-        });
-    }, []);
-
     return (
         <Context.Provider value={{ onUserLogin, setUser, user }}>
             <div className="App">
@@ -73,28 +44,15 @@ export default function App() {
                 <BrowserRouter>
                     <Switch>
                         <Route path={"/"} exact>
-                            <Home courses={courses} />
+                            <Home />
                         </Route>
 
-                        <Route path={"/course_info"} exact>
-                            <CourseInfo
-                                videoURL={courseProps.videoURL}
-                                shortDesc={courseProps.shortDesc}
-                                longDescArr={longDescArr}
-                            />
-                        </Route>
                         <Route
-                            path={"/course_info/:id"}
-                            component={CourseInfo}
+                            path="/course/:id"
+                            component={Course}
+                            test={"asdasd"}
                         />
 
-                        <Route path={"/course"}>
-                            <Course
-                                videoURL={courseProps.videoURL}
-                                shortDesc={courseProps.shortDesc}
-                                longDescArr={longDescArr}
-                            />
-                        </Route>
                         <Route path={"/auth/login"} component={SignIn} />
                         <Route path={"/auth/register"} component={SignUp} />
                         <Route path={"/auth/logout"} component={SignOut} />
