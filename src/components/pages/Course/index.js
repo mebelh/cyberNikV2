@@ -13,8 +13,10 @@ export default function Course({ match }) {
 
     const [lecture, setLecture] = useState({});
 
+    const user = JSON.parse(localStorage.getItem("user"));
+
     useEffect(() => {
-        fetch(`http://localhost:3001/courses/${courseId}`, {
+        fetch(`http://localhost:3001/courses/${courseId}/${user.login}`, {
             method: "GET",
             headers: {
                 Accept: "application/json",
@@ -24,6 +26,8 @@ export default function Course({ match }) {
             setCourse(await e.json());
         });
     }, []);
+
+    console.log(course);
 
     return (
         <div className="Course">

@@ -40,7 +40,6 @@ router.post("/add", async (req, res) => {
 
 router.get("/all", async (req, res) => {
     const courses = await Course.find();
-
     res.send(
         JSON.stringify(
             courses.map(
@@ -60,13 +59,35 @@ router.get("/all", async (req, res) => {
     );
 });
 
-router.get("/:link", async (req, res) => {
-    const { link } = req.params;
-    const course = await Course.find({ link });
-    // if (req.session.user.courses.filter((e) => e.link === link)) {
-    //     res.send(course.trial);
-    // } else {
-    res.send(course.length ? JSON.stringify(...course) : JSON.stringify({}));
+router.get("/:id/:userLogin", async (req, res) => {
+    const { id, userLogin } = req.params;
+
+    const course = await Course.find({ link: id });
+
+    const user = await User.findOne({ login: userLogin });
+
+    if (!~user.courses.indexOf(id)) {
+        console.log("User");
+    }
+
+    res.send(
+        course.length
+            ? JSON.stringify(...course, (key, val) => {
+                  if (key === "modules")
+                      return val.map(({ lectures, name, duration }) => {
+                          return {
+                              name,
+                              duration,
+                              lectures: lectures.map(({ name, duration }) => ({
+                                  name,
+                                  duration,
+                              })),
+                          };
+                      });
+                  return val;
+              })
+            : JSON.stringify({})
+    );
 
     // }
 });
