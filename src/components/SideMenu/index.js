@@ -1,10 +1,12 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useEffect } from "react";
 import "./style.scss";
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
 export default function SideMenu({ modules }) {
-    const AddLectureInModule = useCallback(({ lectures }) => {
+    const AddLectureInModule = ({ lectures }) => {
+        console.log(lectures);
+
         return lectures.map((el, index) => (
             <div
                 id={`collapse_${index}`}
@@ -24,29 +26,32 @@ export default function SideMenu({ modules }) {
                 </ul>
             </div>
         ));
-    }, []);
+    };
 
-    const AddModulesInSideMenu = ({ modules }) => {
-        console.log(modules);
-        return modules.map((e) => (
+    const AddModulesInSideMenu = ({ modules = [] }) => {
+        return modules.map((el, index) => (
             <div className="accordion" id="accordionExample">
-                {/* <div className="card">
+                <div className="card">
                     <div className="card-header" id="headingOne">
-                        <h2 className="mb-0">
+                        <div className="mb-0">
                             <button
                                 className="btn btn-link"
                                 type="button"
                                 data-toggle="collapse"
-                                data-target={`#collapse_${num}`}
+                                data-target={`#collapse_${index}`}
                                 aria-expanded="true"
-                                aria-controls={"collapse_" + { num }}
+                                aria-controls={"collapse_" + { index }}
                             >
-                                {el.moduleName}
+                                {el.name}
                             </button>
-                        </h2>
+                            <span>
+                                Количество лекций:{" "}
+                                <strong>{el.lectures.length}</strong>
+                            </span>
+                        </div>
                     </div>
-                    <AddLectureInModule lectures={el.lectures} num={num} />
-                </div> */}
+                    <AddLectureInModule lectures={el.lectures} num={index} />
+                </div>
             </div>
         ));
     };

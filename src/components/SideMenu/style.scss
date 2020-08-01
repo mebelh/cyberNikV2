@@ -2,6 +2,21 @@
   width: calc(400px - 1em);
   margin-left: 1em;
 
+  .card-header>div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    span {
+      color: white;
+
+      strong {
+        margin-left: .3em;
+        font-size: 1.1em;
+      }
+    }
+  }
+
   .list-group-item {
     background-color: #E2E8E4;
     border: 1px solid #00000011;

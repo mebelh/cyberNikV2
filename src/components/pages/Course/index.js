@@ -43,7 +43,7 @@ export default function Course({ match }) {
                     description={course.description}
                 />
             </div>
-            {/* <SideMenu className="SideMenu" modules={course.modules} /> */}
+            <SideMenu className="SideMenu" modules={course.modules} />
         </div>
     );
 }
