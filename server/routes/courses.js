@@ -66,28 +66,31 @@ router.get("/:id/:userLogin", async (req, res) => {
 
     const user = await User.findOne({ login: userLogin });
 
-    if (!~user.courses.indexOf(id)) {
-        console.log("User");
-    }
-
-    res.send(
-        course.length
-            ? JSON.stringify(...course, (key, val) => {
-                  if (key === "modules")
-                      return val.map(({ lectures, name, duration }) => {
-                          return {
-                              name,
-                              duration,
-                              lectures: lectures.map(({ name, duration }) => ({
+    if (course.length) {
+        const isPremium = ~user.courses.join("").indexOf(id);
+        res.send(
+            isPremium
+                ? JSON.stringify(...course)
+                : JSON.stringify(...course, (key, val) => {
+                      if (key === "modules")
+                          return val.map(({ lectures, name, duration }) => {
+                              return {
                                   name,
                                   duration,
-                              })),
-                          };
-                      });
-                  return val;
-              })
-            : JSON.stringify({})
-    );
+                                  lectures: lectures.map(
+                                      ({ name, duration }) => ({
+                                          name,
+                                          duration,
+                                      })
+                                  ),
+                              };
+                          });
+                      return val;
+                  })
+        );
+    } else {
+        res.send(JSON.stringify({}));
+    }
 
     // }
 });

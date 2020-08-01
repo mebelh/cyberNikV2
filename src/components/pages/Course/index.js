@@ -27,8 +27,6 @@ export default function Course({ match }) {
         });
     }, []);
 
-    console.log(course);
-
     return (
         <div className="Course">
             <div className="Course__view">
