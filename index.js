@@ -1,6 +1,8 @@
 const express = require("express");
 const path = require("path");
 
+const config = require("config");
+
 const app = express();
 const session = require("express-session");
 const mongoose = require("mongoose");
@@ -10,8 +12,7 @@ const bodyParser = require("body-parser");
 const coursesRoute = require("./routes/courses");
 const authRoute = require("./routes/auth");
 
-const MONGO_URI =
-    "mongodb+srv://artem:12345@cluster0.6bskz.mongodb.net/CyberIz?retryWrites=true&w=majority";
+const MONGO_URI = config.get("mongoUri");
 
 const userMiddleware = require("./middleware/user");
 
@@ -20,7 +21,7 @@ const store = new MongoStore({
     collection: "sessions",
 });
 
-const PORT = 3001;
+const PORT = config.get("port") || 3000;
 
 app.set("view engine", "hbs");
 app.set("views", "views");
@@ -81,6 +82,7 @@ const start = async () => {
     } catch (e) {
         if (e) {
             console.log(e);
+            process.exit(1);
         }
     }
 };
